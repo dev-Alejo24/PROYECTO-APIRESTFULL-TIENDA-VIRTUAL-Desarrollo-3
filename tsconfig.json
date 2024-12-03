@@ -1,0 +1,26 @@
+{
+  "compilerOptions": { //opciones de compilador 
+    "esModuleInterop": true,
+    "module": "commonjs", //modulo comun de node js
+    "removeComments": true, //remueve comentarios a la hora de compilar
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true, //para importar modulos 
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true, //crea mapas
+    "target": "es6",
+    "outDir": "./build",// copia de 'src' pero en JS
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "paths": {
+      "Modules/*": ["src/modules/*"]
+    },
+    "lib": ["es2016","dom"], //usa la version 2016 motor ES7
+  },
+  
+  "include": ["src/**/*.ts"], //toma todos los archivos de la carpeta src y los compila 
+  "exclude": [
+    "node_modules/**/*", //excluye todos los archivos de la carpeta module-node
+    ".vscode/**/*" //exvluye cosas de vs code
+  ]
+}

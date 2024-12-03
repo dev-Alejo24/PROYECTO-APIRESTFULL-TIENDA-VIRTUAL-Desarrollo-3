@@ -1,0 +1,32 @@
+{
+    //paquete o dependencia que cambia de typescrit en JS y compilado por eslint
+    "parser": "@typescript-eslint/parser",
+    "extends": [ //extender reglas para ver hasta donde se 
+      "airbnb-base",
+      "airbnb-typescript/base",// aplica las reglas de estilo populares de JS
+      "eslint:recommended", // toma las reglas de JS y las aplica en TypeScript
+      "plugin:@typescript-eslint/recommended"// ⬆️ ...
+    ],
+    "parserOptions": { // opciones de como parseamos  
+      "project": "./tsconfig.json", // parsea las opciones a lo que tuiene que ver el ts.config
+      "tsconfigRootDir": "./",// aplique eso a todos los archivos en src
+      "sourceType": "module" // especifica donde estan los archivos
+    },
+    "rules": {
+      "no-console": "off", // permite los console.log
+      "import/prefer-default-export": "off",
+      "class-methods-use-this": "off",
+      "import/no-extraneous-dependencies": "off",
+      "no-param-reassign": "off",
+      "no-throw-literal": "off",
+      "@typescript-eslint/no-throw-literal": "off",
+      "no-restricted-syntax": "off",
+      "max-len": "off",
+      "@typescript-eslint/no-inferrable-types": "off", // no da redundancia al tipar los datos
+      "@typescript-eslint/no-explicit-any": "off", // permite  el any
+      "init-declarations": ["error", "never"], //para desabilitar inicializacion en las tuplas
+      "quotes": ["error", "single"], // solo permite comillas simples
+      "max-classes-per-file": "off", // permite varias clases en un solo archivo
+      "@typescript-eslint/indent": "off" // quita el espaciado especifico del lenguaje
+    }
+  }

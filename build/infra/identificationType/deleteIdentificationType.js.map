@@ -1,0 +1,1 @@
+{"version":3,"file":"deleteIdentificationType.js","sourceRoot":"","sources":["../../../src/infra/identificationType/deleteIdentificationType.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;AAAA,mGAAsE;AAEtE,MAAa,6BAA6B;IAClC,OAAO,CAAC,EAAU;;YACtB,OAAO,MAAM,iCAAkB,CAAC,OAAO,CAAC,EAAE,KAAK,EAAE,EAAE,EAAE,EAAE,EAAE,CAAC,CAAC;QAC7D,CAAC;KAAA;CACF;AAJD,sEAIC"}
