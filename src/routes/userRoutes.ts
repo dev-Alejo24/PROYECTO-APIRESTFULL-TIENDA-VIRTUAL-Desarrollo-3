@@ -17,9 +17,9 @@ router.post('/api/users/register', [
   body('phone').notEmpty().trim().withMessage('El número de celular es requerido'),
   body('email').isEmail().trim().withMessage('Debe ser un email válido'),
   body('password').isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres'),
-  body('idType').isInt().withMessage('El tipo de identificación es requerido y debe ser un número entero'),
+  body('typeId').isInt().withMessage('El tipo de identificación es requerido y debe ser un número entero'),
   body('identificationNumber').notEmpty().withMessage('El número de identificación es requerido'),
-  body('idAddress').isInt().withMessage('La dirección es requerida y debe ser un número entero'),
+  body('addressId').isInt().withMessage('La dirección es requerida y debe ser un número entero'),
 ], register);
 
 router.post('/api/users/login', [

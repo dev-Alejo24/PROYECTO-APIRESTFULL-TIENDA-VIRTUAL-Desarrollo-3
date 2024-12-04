@@ -8,24 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetAllIdentificationTypesController = void 0;
-const getAllIdentificationTypesService_1 = require("../../services/identificationType/getAllIdentificationTypesService");
-class GetAllIdentificationTypesController {
-    constructor() {
-        this.getAllIdentificationTypesService = new getAllIdentificationTypesService_1.GetAllIdentificationTypesService();
-    }
-    handle(_req, res) {
+exports.UpdateAddressInfra = void 0;
+const adressModel_1 = __importDefault(require("../../models/adressModel"));
+class UpdateAddressInfra {
+    execute(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const types = yield this.getAllIdentificationTypesService.execute();
-                res.status(200).json(types);
-            }
-            catch (error) {
-                res.status(500).json({ message: error.message });
-            }
+            const [affectedRows] = yield adressModel_1.default.update(data, { where: { id } });
+            return affectedRows;
         });
     }
 }
-exports.GetAllIdentificationTypesController = GetAllIdentificationTypesController;
-//# sourceMappingURL=getAllIdentificationTypesController.js.map
+exports.UpdateAddressInfra = UpdateAddressInfra;
+//# sourceMappingURL=updateAddresses.js.map

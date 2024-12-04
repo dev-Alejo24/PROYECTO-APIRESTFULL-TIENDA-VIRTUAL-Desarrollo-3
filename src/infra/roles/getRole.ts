@@ -17,4 +17,19 @@ export class GetRoleSql {
     });
     return role.length > 0 ? role[0] : null;
   }
+
+  async countRoles(): Promise<number> {
+    const query = "SELECT COUNT(*) as total FROM roles";
+    const result = await sequelize.query(query, { type: QueryTypes.SELECT });
+    return (result[0] as { total: number }).total; // Asegurarse de que el tipo sea correcto
+  }
+
+  async getRolesByName(name: string): Promise<any[]> {
+    const query = "SELECT * FROM roles WHERE name LIKE :name";
+    const roles = await sequelize.query(query, {
+      replacements: { name: `%${name}%` },
+      type: QueryTypes.SELECT,
+    });
+    return roles;
+  }
 }

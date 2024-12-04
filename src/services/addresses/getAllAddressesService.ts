@@ -1,4 +1,4 @@
-import { GetAllAddressesInfra } from '../../infra/adrdesses/getAllAddresses';
+import { GetAllAddressesInfra } from '../../infra/addresses/getAllAddresses';
 
 export class GetAllAddressesService {
   private getAllAddressesInfra = new GetAllAddressesInfra();

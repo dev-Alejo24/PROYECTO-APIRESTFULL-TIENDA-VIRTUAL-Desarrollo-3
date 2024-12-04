@@ -8,24 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetAllIdentificationTypesController = void 0;
-const getAllIdentificationTypesService_1 = require("../../services/identificationType/getAllIdentificationTypesService");
-class GetAllIdentificationTypesController {
-    constructor() {
-        this.getAllIdentificationTypesService = new getAllIdentificationTypesService_1.GetAllIdentificationTypesService();
-    }
-    handle(_req, res) {
+exports.GetAddressByIdInfra = void 0;
+const sequelize_1 = require("sequelize");
+const database_1 = __importDefault(require("../../config/database"));
+class GetAddressByIdInfra {
+    execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const types = yield this.getAllIdentificationTypesService.execute();
-                res.status(200).json(types);
-            }
-            catch (error) {
-                res.status(500).json({ message: error.message });
-            }
+            const query = `SELECT * FROM addresses WHERE id = :id`;
+            const result = yield database_1.default.query(query, {
+                replacements: { id },
+                type: sequelize_1.QueryTypes.SELECT,
+            });
+            return result.length ? result[0] : null;
         });
     }
 }
-exports.GetAllIdentificationTypesController = GetAllIdentificationTypesController;
-//# sourceMappingURL=getAllIdentificationTypesController.js.map
+exports.GetAddressByIdInfra = GetAddressByIdInfra;
+//# sourceMappingURL=getAdressById.js.map

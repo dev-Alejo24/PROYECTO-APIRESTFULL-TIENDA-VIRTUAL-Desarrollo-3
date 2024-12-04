@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetAddressByIdService = void 0;
-const getAdressById_1 = require("../../infra/adrdesses/getAdressById");
+const getAdressById_1 = require("../../infra/addresses/getAdressById");
 class GetAddressByIdService {
     constructor() {
         this.getAddressByIdInfra = new getAdressById_1.GetAddressByIdInfra();

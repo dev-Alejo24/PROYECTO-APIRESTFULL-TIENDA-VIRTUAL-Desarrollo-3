@@ -9,17 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateAddressService = void 0;
-const updateAddresses_1 = require("../../infra/addresses/updateAddresses");
-class UpdateAddressService {
-    constructor() {
-        this.updateAddressInfra = new updateAddresses_1.UpdateAddressInfra();
+exports.countRoles = void 0;
+const getRole_1 = require("../../infra/roles/getRole");
+const countRoles = (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const roleService = new getRole_1.GetRoleSql();
+        const totalRoles = yield roleService.countRoles();
+        res.status(200).json({ total: totalRoles });
     }
-    execute(id, data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.updateAddressInfra.execute(id, data);
-        });
+    catch (error) {
+        res.status(400).json({ error: error.message });
     }
-}
-exports.UpdateAddressService = UpdateAddressService;
-//# sourceMappingURL=updateAddressService.js.map
+});
+exports.countRoles = countRoles;
+//# sourceMappingURL=countRolesController.js.map

@@ -1,4 +1,4 @@
-import { DeleteAddressInfra } from '../../infra/adrdesses/deleteAddresses';
+import { DeleteAddressInfra } from '../../infra/addresses/deleteAddresses';
 
 export class DeleteAddressService {
   private deleteAddressInfra = new DeleteAddressInfra();

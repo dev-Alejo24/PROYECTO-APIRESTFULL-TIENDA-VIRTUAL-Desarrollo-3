@@ -1,4 +1,4 @@
-import { CreateAddressInfra } from '../../infra/adrdesses/createAddress';
+import { CreateAddressInfra } from '../../infra/addresses/createAddress';
 
 export class CreateAddressService {
   private createAddressInfra = new CreateAddressInfra();

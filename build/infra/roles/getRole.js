@@ -33,6 +33,23 @@ class GetRoleSql {
             return role.length > 0 ? role[0] : null;
         });
     }
+    countRoles() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = "SELECT COUNT(*) as total FROM roles";
+            const result = yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
+            return result[0].total;
+        });
+    }
+    getRolesByName(name) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = "SELECT * FROM roles WHERE name LIKE :name";
+            const roles = yield database_1.default.query(query, {
+                replacements: { name: `%${name}%` },
+                type: sequelize_1.QueryTypes.SELECT,
+            });
+            return roles;
+        });
+    }
 }
 exports.GetRoleSql = GetRoleSql;
 //# sourceMappingURL=getRole.js.map

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { GetAllIdentificationTypesService } from '../../services/identificationType/getAllIdentificationnTypesService';
+import { GetAllIdentificationTypesService } from '../../services/identificationType/getAllIdentificationTypesService';
 
 export class GetAllIdentificationTypesController {
   private getAllIdentificationTypesService = new GetAllIdentificationTypesService();

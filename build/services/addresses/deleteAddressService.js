@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteAddressService = void 0;
-const deleteAddresses_1 = require("../../infra/adrdesses/deleteAddresses");
+const deleteAddresses_1 = require("../../infra/addresses/deleteAddresses");
 class DeleteAddressService {
     constructor() {
         this.deleteAddressInfra = new deleteAddresses_1.DeleteAddressInfra();

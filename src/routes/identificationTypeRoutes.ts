@@ -17,11 +17,11 @@ const updateIdentificationTypeController = new UpdateIdentificationTypeControlle
 const deleteIdentificationTypeController = new DeleteIdentificationTypeController();
 
 // Rutas públicas
-router.get('/api/identification-types', getAllIdentificationTypesController.handle);
+router.get('/api/identification-types', (req, res) => getAllIdentificationTypesController.handle(req, res));
 router.get(
   '/api/identification-types/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  getIdentificationTypeByIdController.handle
+  (req, res) => getIdentificationTypeByIdController.handle(req, res)
 );
 
 // Rutas protegidas
@@ -31,7 +31,7 @@ router.post(
     body('type').notEmpty().withMessage('El tipo de identificación es obligatorio.'),
   ],
   authMiddleware,
-  createIdentificationTypeController.handle
+  (req, res) => createIdentificationTypeController.handle(req, res)
 );
 
 router.put(
@@ -41,14 +41,14 @@ router.put(
     body('type').optional(),
   ],
   authMiddleware,
-  updateIdentificationTypeController.handle
+  (req, res) => updateIdentificationTypeController.handle(req, res)
 );
 
 router.delete(
   '/api/identification-types/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
   authMiddleware,
-  deleteIdentificationTypeController.handle
+  (req, res) => deleteIdentificationTypeController.handle(req, res)
 );
 
 export default router;

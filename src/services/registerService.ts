@@ -10,12 +10,12 @@ export const registerUser = async (userData: {
     phone: string,
     email: string,
     password: string,
-    idType: number, // Nuevo campo
-    identificationNumber: string, // Nuevo campo
-    idAddress: number, // Nuevo campo
+    typeId: number,
+    identificationNumber: string,
+    addressId: number,
 }): Promise<any> => {
     
-    const { firstName, middleName, lastName, phone, email, password, idType, identificationNumber, idAddress } = userData;
+    const { firstName, middleName, lastName, phone, email, password, typeId, identificationNumber, addressId } = userData;
 
     const userSelect = new GetLoginSql();
     const existingUser = await userSelect.getLoginSql(email);
@@ -34,14 +34,14 @@ export const registerUser = async (userData: {
         },
         people: {
             userId?: number,
-            idType: number,
+            typeId: number,
             identificationNumber: string,
             firstName: string,
             middleName: string,
             lastName: string,
             email?: string,
             phone: string,
-            idAddress: number;
+            addressId: number;
         },
     };
 
@@ -55,14 +55,14 @@ export const registerUser = async (userData: {
         },
         people: {
             userId: null,
-            idType,
+            typeId,
             identificationNumber,
             firstName,
             middleName,
             lastName,
             email, 
             phone,
-            idAddress
+            addressId
         },
     };
 

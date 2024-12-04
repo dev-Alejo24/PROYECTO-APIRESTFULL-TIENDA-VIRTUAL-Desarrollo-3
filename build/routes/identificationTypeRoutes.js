@@ -17,15 +17,15 @@ const getIdentificationTypeByIdController = new getIdentificationTypeByIdControl
 const createIdentificationTypeController = new createIdentificationTypeController_1.CreateIdentificationTypeController();
 const updateIdentificationTypeController = new updateIdentificationTypeController_1.UpdateIdentificationTypeController();
 const deleteIdentificationTypeController = new deleteIdentificationTypeController_1.DeleteIdentificationTypeController();
-router.get('/api/identification-types', getAllIdentificationTypesController.handle);
-router.get('/api/identification-types/:id', [(0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número.')], getIdentificationTypeByIdController.handle);
+router.get('/api/identification-types', (req, res) => getAllIdentificationTypesController.handle(req, res));
+router.get('/api/identification-types/:id', [(0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número.')], (req, res) => getIdentificationTypeByIdController.handle(req, res));
 router.post('/api/identification-types', [
     (0, express_validator_1.body)('type').notEmpty().withMessage('El tipo de identificación es obligatorio.'),
-], authMiddleware_1.default, createIdentificationTypeController.handle);
+], authMiddleware_1.default, (req, res) => createIdentificationTypeController.handle(req, res));
 router.put('/api/identification-types/:id', [
     (0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número.'),
     (0, express_validator_1.body)('type').optional(),
-], authMiddleware_1.default, updateIdentificationTypeController.handle);
-router.delete('/api/identification-types/:id', [(0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número.')], authMiddleware_1.default, deleteIdentificationTypeController.handle);
+], authMiddleware_1.default, (req, res) => updateIdentificationTypeController.handle(req, res));
+router.delete('/api/identification-types/:id', [(0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número.')], authMiddleware_1.default, (req, res) => deleteIdentificationTypeController.handle(req, res));
 exports.default = router;
 //# sourceMappingURL=identificationTypeRoutes.js.map

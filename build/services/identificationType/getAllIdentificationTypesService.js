@@ -8,24 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetAllIdentificationTypesController = void 0;
-const getAllIdentificationTypesService_1 = require("../../services/identificationType/getAllIdentificationTypesService");
-class GetAllIdentificationTypesController {
-    constructor() {
-        this.getAllIdentificationTypesService = new getAllIdentificationTypesService_1.GetAllIdentificationTypesService();
-    }
-    handle(_req, res) {
+exports.GetAllIdentificationTypesService = void 0;
+const identificationTypeModel_1 = __importDefault(require("../../models/identificationTypeModel"));
+class GetAllIdentificationTypesService {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const types = yield this.getAllIdentificationTypesService.execute();
-                res.status(200).json(types);
+                const types = yield identificationTypeModel_1.default.findAll();
+                return types;
             }
             catch (error) {
-                res.status(500).json({ message: error.message });
+                throw new Error('Error al obtener los tipos de identificación: ' + error.message);
             }
         });
     }
 }
-exports.GetAllIdentificationTypesController = GetAllIdentificationTypesController;
-//# sourceMappingURL=getAllIdentificationTypesController.js.map
+exports.GetAllIdentificationTypesService = GetAllIdentificationTypesService;
+//# sourceMappingURL=getAllIdentificationTypesService.js.map

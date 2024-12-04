@@ -19,9 +19,9 @@ router.post('/api/users/register', [
     (0, express_validator_1.body)('phone').notEmpty().trim().withMessage('El número de celular es requerido'),
     (0, express_validator_1.body)('email').isEmail().trim().withMessage('Debe ser un email válido'),
     (0, express_validator_1.body)('password').isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres'),
-    (0, express_validator_1.body)('idType').isInt().withMessage('El tipo de identificación es requerido y debe ser un número entero'),
+    (0, express_validator_1.body)('typeId').isInt().withMessage('El tipo de identificación es requerido y debe ser un número entero'),
     (0, express_validator_1.body)('identificationNumber').notEmpty().withMessage('El número de identificación es requerido'),
-    (0, express_validator_1.body)('idAddress').isInt().withMessage('La dirección es requerida y debe ser un número entero'),
+    (0, express_validator_1.body)('addressId').isInt().withMessage('La dirección es requerida y debe ser un número entero'),
 ], register_1.register);
 router.post('/api/users/login', [
     (0, express_validator_1.body)('email').isEmail().trim().withMessage('Debe ser un email válido'),

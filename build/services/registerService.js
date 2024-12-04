@@ -18,7 +18,7 @@ const loginSql_1 = require("../infra/loginSql");
 const createUser_1 = require("../infra/createUser");
 const createPeople_1 = require("../infra/createPeople");
 const registerUser = (userData) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, middleName, lastName, phone, email, password, idType, identificationNumber, idAddress } = userData;
+    const { firstName, middleName, lastName, phone, email, password, typeId, identificationNumber, addressId } = userData;
     const userSelect = new loginSql_1.GetLoginSql();
     const existingUser = yield userSelect.getLoginSql(email);
     if (existingUser) {
@@ -35,14 +35,14 @@ const registerUser = (userData) => __awaiter(void 0, void 0, void 0, function* (
         },
         people: {
             userId: null,
-            idType,
+            typeId,
             identificationNumber,
             firstName,
             middleName,
             lastName,
             email,
             phone,
-            idAddress
+            addressId
         },
     };
     const user = yield createUser.createUserSql(dataUser.user);

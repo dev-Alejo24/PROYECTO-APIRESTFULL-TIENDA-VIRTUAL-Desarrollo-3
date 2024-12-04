@@ -22,7 +22,7 @@ class People extends Model {
 
   public phone!: string;
 
-  public addressId: string;
+  public addressId: number;
 
   // Timestamps
   public readonly createdAt!: Date;
