@@ -14,7 +14,7 @@ const router = (0, express_1.Router)();
 router.get('/api/users/purchaseOrders', getPurchaerseOrdersController_1.getAllPurchaseOrders);
 router.get('/api/users/purchaseOrders/:id', [
     (0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número'),
-], getPurchaerseOrdersController_1.getPurchaseOrderById);
+], authMiddleware_1.default, getPurchaerseOrdersController_1.getPurchaseOrderById);
 router.post('/api/users/purchaseOrders', [
     (0, express_validator_1.body)('idSupplier').isNumeric().withMessage('El ID del proveedor es requerido y debe ser un número'),
     (0, express_validator_1.body)('idStatus').isNumeric().withMessage('El ID del estado es requerido y debe ser un número'),

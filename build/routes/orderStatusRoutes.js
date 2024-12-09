@@ -22,7 +22,7 @@ router.put('/api/users/orderStatus/:id', [
     (0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número'),
     (0, express_validator_1.body)('name').isString().withMessage('El nombre es requerido'),
 ], authMiddleware_1.default, updateOrderStatusController_1.updateOrderStatus);
-router.delete('/api/users/orderStatus/:id', [
+router.delete('/api/users/orderStatus/delete/:id', [
     (0, express_validator_1.param)('id').isNumeric().withMessage('El ID debe ser un número'),
 ], authMiddleware_1.default, deleteOrderStatusController_1.deleteOrderStatus);
 exports.default = router;

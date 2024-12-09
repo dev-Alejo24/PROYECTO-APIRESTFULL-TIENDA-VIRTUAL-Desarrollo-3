@@ -1,0 +1,3 @@
+###
+DELETE http://localhost:3001/api/users/orderStatus/delete/3
+Authorization: {Bearer{token}}

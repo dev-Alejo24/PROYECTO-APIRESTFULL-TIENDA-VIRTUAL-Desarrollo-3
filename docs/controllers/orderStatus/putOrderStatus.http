@@ -1,0 +1,4 @@
+###
+PUT http://localhost:3001/api/users/orderStatus/3
+Content-Type: application/json
+Authorization: {Bearer{token}}

@@ -24,7 +24,7 @@ router.put('/api/users/orderStatus/:id', [
   body('name').isString().withMessage('El nombre es requerido'),
 ], authMiddleware, updateOrderStatus); // Actualizar estado de orden por ID
 
-router.delete('/api/users/orderStatus/:id', [
+router.delete('/api/users/orderStatus/delete/:id', [
   param('id').isNumeric().withMessage('El ID debe ser un número'),
 ], authMiddleware, deleteOrderStatus); // Eliminar estado de orden por ID
 

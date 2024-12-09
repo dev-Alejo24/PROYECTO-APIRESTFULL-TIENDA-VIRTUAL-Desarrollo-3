@@ -12,7 +12,7 @@ const router = Router();
 router.get('/api/users/purchaseOrders', getAllPurchaseOrders); // Obtener todas las órdenes de compra
 router.get('/api/users/purchaseOrders/:id', [
   param('id').isNumeric().withMessage('El ID debe ser un número'),
-], getPurchaseOrderById); // Obtener una orden de compra por ID
+], authMiddleware, getPurchaseOrderById); // Obtener una orden de compra por ID
 
 // Rutas protegidas
 router.post('/api/users/purchaseOrders', [
