@@ -3,10 +3,13 @@ POST  http://localhost:3001/api/users/register
 Content-Type: application/json
 
 {
-    "firstName": "mic",
-    "middleName": "mic",
-    "lastName": "01",
-    "phone": "+57",
-    "email":"prueba01@example.com",
-    "password":"12345696"
+  "firstName": "prueba03",
+  "middleName": "identification03",
+  "lastName": "Adress03",
+  "phone": "1234567803",
+  "email": "prueba03@example.com",
+  "password": "pruebaContra03",
+  "typeId": 2,
+  "identificationNumber": "62554587911",
+  "addressId": 1
 }

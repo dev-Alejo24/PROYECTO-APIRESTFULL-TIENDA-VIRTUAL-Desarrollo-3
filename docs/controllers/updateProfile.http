@@ -1,0 +1,16 @@
+###
+PUT http://localhost:3001/api/users/profile/1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMzNzUzNTEyLCJleHAiOjE3MzM3NTcxMTJ9.uyvNuwCpimym95ERhUZXYb4Qa6yIGAbQXx8EOhxlQ-o
+
+{
+  "firstName": "prueba03",
+  "middleName": "identification03",
+  "lastName": "UPDATE",
+  "phone": "1234567803",
+  "email": "prueba03@example.com",
+  "password": "pruebaContra03",
+  "typeId": 2,
+  "identificationNumber": "62554587911",
+  "addressId": 1
+}

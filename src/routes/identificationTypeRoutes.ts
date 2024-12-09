@@ -5,7 +5,6 @@ import { GetIdentificationTypeByIdController } from '../controllers/identificati
 import { CreateIdentificationTypeController } from '../controllers/identificationType/createIdentificationTypeController';
 import { UpdateIdentificationTypeController } from '../controllers/identificationType/updateIdentificationTypeController';
 import { DeleteIdentificationTypeController } from '../controllers/identificationType/deleteIdentificationTypeController';
-import authMiddleware from '../middlewares/authMiddleware';
 
 const router = Router();
 
@@ -24,13 +23,12 @@ router.get(
   (req, res) => getIdentificationTypeByIdController.handle(req, res)
 );
 
-// Rutas protegidas
+// Rutas públicas
 router.post(
   '/api/identification-types',
   [
     body('type').notEmpty().withMessage('El tipo de identificación es obligatorio.'),
   ],
-  authMiddleware,
   (req, res) => createIdentificationTypeController.handle(req, res)
 );
 
@@ -40,14 +38,12 @@ router.put(
     param('id').isNumeric().withMessage('El ID debe ser un número.'),
     body('type').optional(),
   ],
-  authMiddleware,
   (req, res) => updateIdentificationTypeController.handle(req, res)
 );
 
 router.delete(
   '/api/identification-types/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  authMiddleware,
   (req, res) => deleteIdentificationTypeController.handle(req, res)
 );
 

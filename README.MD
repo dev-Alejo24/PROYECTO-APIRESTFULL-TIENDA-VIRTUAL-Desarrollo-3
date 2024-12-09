@@ -3,12 +3,26 @@ src/
 ├── config/
 │   ├── database.ts
 ├── controllers/
+│   ├── adresses/
+│   ├── identificationType/
+│   ├── roles/
+│   ├── userRoles/
+│   ├── orderStetatus/
+│   ├── purchaseOrders/
+│   ├── orderDetails/
 │   ├── deleteProfile.ts
 │   ├── getProfile.ts
 │   ├── login.ts
 │   ├── register.ts
 │   ├── updateProfile.ts
 ├── infra/
+│   ├── adresses/
+│   ├── identificationType/
+│   ├── roles/
+│   ├── userRoles/
+│   ├── orderStetatus/
+│   ├── purchaseOrders/
+│   ├── orderDetails/
 │   ├── createPeople.ts
 │   ├── createUser.ts
 │   ├── deletePeople.ts
@@ -27,6 +41,13 @@ src/
 ├── routes/
 │   ├── userRoutes.ts
 ├── services/
+│   ├── adresses/
+│   ├── identificationType/
+│   ├── roles/
+│   ├── userRoles/
+│   ├── orderStetatus/
+│   ├── purchaseOrders/
+│   ├── orderDetails/
 │   ├── deleteUserProfileService.ts
 │   ├── getUserProfileService.ts
 │   ├── loginService.ts

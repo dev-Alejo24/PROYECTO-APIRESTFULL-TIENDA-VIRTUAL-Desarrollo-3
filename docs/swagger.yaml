@@ -3,9 +3,16 @@ info:
   title: API de Usuarios
   version: 1.0.0
 paths:
-  /api/users/register:
+  /api/identification-types:
+    get:
+      summary: Obtener todos los tipos de identificación
+      responses:
+        '200':
+          description: Lista de tipos de identificación
+        '500':
+          description: Error interno del servidor
     post:
-      summary: Registrar un nuevo usuario
+      summary: Crear un nuevo tipo de identificación
       requestBody:
         required: true
         content:
@@ -13,122 +20,303 @@ paths:
             schema:
               type: object
               properties:
-                firstName:
+                name:
                   type: string
-                middleName:
-                  type: string
-                lastName:
-                  type: string
-                phone:
-                  type: string
-                email:
-                  type: string
-                password:
+                description:
                   type: string
       responses:
         '201':
-          description: Usuario registrado
+          description: Tipo de identificación creado
         '400':
           description: Error en la solicitud
 
-  /api/users/login:
-    post:
-      summary: Iniciar sesión de un usuario
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: "user@example.com"
-                password:
-                  type: string
-                  example: "userpassword"
-      responses:
-        '200':
-          description: Inicio de sesión exitoso
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-                    description: JWT token generado para el usuario
-        '400':
-          description: Error en la solicitud
-        '401':
-          description: Credenciales inválidas
-
-  /api/users/obtenerUsuario:
+  /api/identification-types/{id}:
     get:
-      summary: Obtener la información del usuario autenticado
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Información del usuario obtenida exitosamente
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    description: ID del usuario
-                  fullName:
-                    type: string
-                    description: Nombre completo del usuario
-                  email:
-                    type: string
-                    description: Correo electrónico del usuario
-                  password:
-                    type: string
-                    description: Contraseña del usuario
-        '401':
-          description: No autorizado, token inválido o expirado
-        '403':
-          description: Acceso prohibido, el usuario no tiene permisos
-        '404':
-          description: Usuario no encontrado
-
-  /api/users/profile/roles/{roleId}:
-    get:
-      summary: Obtener un rol por ID
-      security:
-        - bearerAuth: []
+      summary: Obtener un tipo de identificación por ID
       parameters:
-        - name: roleId
+        - name: id
           in: path
           required: true
           schema:
             type: integer
-          description: ID del rol
       responses:
         '200':
-          description: Rol obtenido exitosamente
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    description: ID del rol
-                  name:
-                    type: string
-                    description: Nombre del rol
-                  description:
-                    type: string
-                    description: Descripción del rol
-        '401':
-          description: No autorizado, token inválido o expirado
-        '403':
-          description: Acceso prohibido, el usuario no tiene permisos
+          description: Tipo de identificación encontrado
+        '404':
+          description: Tipo de identificación no encontrado
+    put:
+      summary: Actualizar un tipo de identificación
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: Tipo de identificación actualizado
+        '400':
+          description: Error en la solicitud
+        '404':
+          description: Tipo de identificación no encontrado
+    delete:
+      summary: Eliminar un tipo de identificación
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Tipo de identificación eliminado
+        '404':
+          description: Tipo de identificación no encontrado
+
+  /api/addresses:
+    get:
+      summary: Obtener todas las direcciones
+      responses:
+        '200':
+          description: Lista de direcciones
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Crear una nueva dirección
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                street:
+                  type: string
+                number:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                country:
+                  type: string
+                zipCode:
+                  type: string
+                userId:
+                  type: integer
+      responses:
+        '201':
+          description: Dirección creada
+        '400':
+          description: Error en la solicitud
+
+  /api/addresses/{id}:
+    get:
+      summary: Obtener una dirección por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dirección encontrada
+        '404':
+          description: Dirección no encontrada
+    put:
+      summary: Actualizar una dirección
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                street:
+                  type: string
+                number:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                country:
+                  type: string
+                zipCode:
+                  type: string
+                userId:
+                  type: integer
+      responses:
+        '200':
+          description: Dirección actualizada
+        '400':
+          description: Error en la solicitud
+        '404':
+          description: Dirección no encontrada
+    delete:
+      summary: Eliminar una dirección
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dirección eliminada
+        '404':
+          description: Dirección no encontrada
+
+  /api/roles:
+    get:
+      summary: Obtener todos los roles
+      responses:
+        '200':
+          description: Lista de roles
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Crear un nuevo rol
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '201':
+          description: Rol creado
+        '400':
+          description: Error en la solicitud
+
+  /api/roles/{id}:
+    get:
+      summary: Obtener un rol por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rol encontrado
+        '404':
+          description: Rol no encontrado
+    put:
+      summary: Actualizar un rol
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: Rol actualizado
+        '400':
+          description: Error en la solicitud
+        '404':
+          description: Rol no encontrado
+    delete:
+      summary: Eliminar un rol
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rol eliminado
         '404':
           description: Rol no encontrado
 
- 
+  /api/user-roles:
+    get:
+      summary: Obtener todos los roles de usuario
+      responses:
+        '200':
+          description: Lista de roles de usuario
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Asignar un rol a un usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                roleId:
+                  type: integer
+      responses:
+        '201':
+          description: Rol asignado al usuario
+        '400':
+          description: Error en la solicitud
+
+  /api/user-roles/{id}:
+    get:
+      summary: Obtener un rol de usuario por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rol de usuario encontrado
+        '404':
+          description: Rol de usuario no encontrado
+    delete:
+      summary: Eliminar un rol de usuario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rol de usuario eliminado
+        '404':
+          description: Rol de usuario no encontrado

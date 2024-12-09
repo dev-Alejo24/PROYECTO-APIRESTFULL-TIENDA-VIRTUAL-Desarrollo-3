@@ -9,6 +9,7 @@ import authMiddleware from '../middlewares/authMiddleware';
 
 const router: Router = Router();
 
+
 // Rutas privadas
 
 // Obtener un rol por ID

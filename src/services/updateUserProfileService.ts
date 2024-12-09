@@ -6,44 +6,73 @@ import { UpdatePeopleSql } from '../infra/updatePeople';
 
 dotenv.config();
 
-export const updateUserProfile = async (userId: number, updateData: Partial<{ names: string; email: string; password: string }>):Promise<any> => {
+export const updateUserProfile = async (
+  userId: number,
+  updateData: Partial<{
+    email: string;
+    password: string;
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    phone: string;
+    typeId: number;
+    identificationNumber: string;
+    addressId: number;
+  }>
+): Promise<any> => {
   const user = new GetUserProfileSql();
   const userResponse = await user.getUserProfileSql(userId);
   console.log(userResponse, 'ur');
   if (!userResponse) {
     throw new Error('Usuario no encontrado');
   }
-  interface UpdateUser {
-    user: {
-      id?:number;
-      email?:string;
-      password?: string;
-    },
-    people: {
-      userId?: number;
-      names?: string;
-      lastNames?: string;
-    }
-  }
-  const { names, email, password } = updateData;
+
   let passwordFormat = '';
-  if (password) {
-    passwordFormat = await bcrypt.hash(password, 10);
+  if (updateData.password) {
+    passwordFormat = await bcrypt.hash(updateData.password, 10);
   }
 
-  const data : UpdateUser = {
+  interface UpdateUser {
     user: {
-      email,
-      password: passwordFormat,
+      id?: number;
+      email?: string;
+      password?: string;
+    };
+    people: {
+      userId?: number;
+      typeId?: number;
+      identificationNumber?: string;
+      firstName?: string;
+      middleName?: string;
+      lastName?: string;
+      email?: string;
+      phone?: string;
+      addressId?: number;
+    };
+  }
+
+  const data: UpdateUser = {
+    user: {
+      email: updateData.email || userResponse.email,
+      password: passwordFormat || userResponse.password,
     },
     people: {
       userId,
-      names,
+      typeId: updateData.typeId || userResponse.people.typeId,
+      identificationNumber: updateData.identificationNumber || userResponse.people.identificationNumber,
+      firstName: updateData.firstName || userResponse.people.firstName,
+      middleName: updateData.middleName || userResponse.people.middleName,
+      lastName: updateData.lastName || userResponse.people.lastName,
+      email: updateData.email || userResponse.people.email,
+      phone: updateData.phone || userResponse.people.phone,
+      addressId: updateData.addressId || userResponse.people.addressId,
     },
   };
+
   const updateUserData = new UpdateUserSql();
   const updatePeopleData = new UpdatePeopleSql();
   const updateUser = await updateUserData.updateUserSql(data.user, userId);
   await updatePeopleData.updatePeopleSql(data.people, userId);
+
   return updateUser;
 };

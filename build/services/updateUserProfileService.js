@@ -26,19 +26,25 @@ const updateUserProfile = (userId, updateData) => __awaiter(void 0, void 0, void
     if (!userResponse) {
         throw new Error('Usuario no encontrado');
     }
-    const { names, email, password } = updateData;
     let passwordFormat = '';
-    if (password) {
-        passwordFormat = yield bcryptjs_1.default.hash(password, 10);
+    if (updateData.password) {
+        passwordFormat = yield bcryptjs_1.default.hash(updateData.password, 10);
     }
     const data = {
         user: {
-            email,
-            password: passwordFormat,
+            email: updateData.email || userResponse.email,
+            password: passwordFormat || userResponse.password,
         },
         people: {
             userId,
-            names,
+            typeId: updateData.typeId || userResponse.people.typeId,
+            identificationNumber: updateData.identificationNumber || userResponse.people.identificationNumber,
+            firstName: updateData.firstName || userResponse.people.firstName,
+            middleName: updateData.middleName || userResponse.people.middleName,
+            lastName: updateData.lastName || userResponse.people.lastName,
+            email: updateData.email || userResponse.people.email,
+            phone: updateData.phone || userResponse.people.phone,
+            addressId: updateData.addressId || userResponse.people.addressId,
         },
     };
     const updateUserData = new updateUser_1.UpdateUserSql();

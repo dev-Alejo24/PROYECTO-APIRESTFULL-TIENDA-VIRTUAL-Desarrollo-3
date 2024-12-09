@@ -5,7 +5,6 @@ import { GetAddressByIdController } from '../controllers/addresses/getAddressByI
 import { CreateAddressController } from '../controllers/addresses/createAddressController';
 import { UpdateAddressController } from '../controllers/addresses/updateAddressController';
 import { DeleteAddressController } from '../controllers/addresses/deleteAddressController';
-import authMiddleware from '../middlewares/authMiddleware';
 
 const router = Router();
 
@@ -17,14 +16,14 @@ const updateAddressController = new UpdateAddressController();
 const deleteAddressController = new DeleteAddressController();
 
 // Rutas públicas
-router.get('/api/addresses', getAllAddressesController.handle);
+router.get('/api/addresses', getAllAddressesController.handle.bind(getAllAddressesController));
 router.get(
   '/api/addresses/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  getAddressByIdController.handle
+  getAddressByIdController.handle.bind(getAddressByIdController)
 );
 
-// Rutas protegidas
+// Rutas públicas
 router.post(
   '/api/addresses',
   [
@@ -33,8 +32,7 @@ router.post(
     body('state').optional(),
     body('zipCode').optional().isLength({ max: 10 }).withMessage('El código postal debe tener como máximo 10 caracteres.'),
   ],
-  authMiddleware,
-  createAddressController.handle
+  createAddressController.handle.bind(createAddressController)
 );
 
 router.put(
@@ -46,15 +44,13 @@ router.put(
     body('state').optional(),
     body('zipCode').optional().isLength({ max: 10 }).withMessage('El código postal debe tener como máximo 10 caracteres.'),
   ],
-  authMiddleware,
-  updateAddressController.handle
+  updateAddressController.handle.bind(updateAddressController)
 );
 
 router.delete(
   '/api/addresses/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  authMiddleware,
-  deleteAddressController.handle
+  deleteAddressController.handle.bind(deleteAddressController)
 );
 
 export default router;

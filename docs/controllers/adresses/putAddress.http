@@ -1,0 +1,10 @@
+###
+PUT http://localhost:3001/api/addresses/1
+Content-Type: application/json
+
+{
+  "street": "333 three St",
+  "city": "Hewston",
+  "state": "TX",
+  "zipCode": "333"
+}

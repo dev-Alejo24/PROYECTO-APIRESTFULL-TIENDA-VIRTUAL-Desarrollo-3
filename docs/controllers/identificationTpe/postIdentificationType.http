@@ -1,0 +1,7 @@
+###
+POST http://localhost:3001/api/identification-types
+Content-Type: application/json
+
+{
+  "type": "C.E"
+}

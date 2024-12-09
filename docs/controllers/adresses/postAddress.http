@@ -1,0 +1,10 @@
+###
+POST http://localhost:3001/api/addresses
+Content-Type: application/json
+
+{
+  "street": "222 Second St",
+  "city": "Hewston",
+  "state": "TX",
+  "zipCode": "2222"
+}
