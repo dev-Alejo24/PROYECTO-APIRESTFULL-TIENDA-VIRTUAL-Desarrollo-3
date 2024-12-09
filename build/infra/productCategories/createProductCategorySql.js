@@ -18,8 +18,8 @@ const database_1 = __importDefault(require("../../config/database"));
 class CreateProductCategorySql {
     createProductCategorySql(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "INSERT INTO productCategories (categoryName, description, createdAt, updatedAt) VALUES (:categoryName, :description, NOW(), NOW())";
-            return yield database_1.default.query(query, {
+            const query = 'INSERT INTO productCategories (categoryName, description, createdAt, updatedAt) VALUES (:categoryName, :description, NOW(), NOW())';
+            return database_1.default.query(query, {
                 replacements: data,
                 type: sequelize_1.QueryTypes.INSERT,
             });

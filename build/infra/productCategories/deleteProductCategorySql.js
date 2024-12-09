@@ -18,8 +18,8 @@ const database_1 = __importDefault(require("../../config/database"));
 class DeleteProductCategorySql {
     deleteProductCategorySql(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "DELETE FROM productCategories WHERE id = :id";
-            return yield database_1.default.query(query, {
+            const query = 'DELETE FROM productCategories WHERE id = :id';
+            return database_1.default.query(query, {
                 replacements: { id },
                 type: sequelize_1.QueryTypes.DELETE,
             });

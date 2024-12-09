@@ -4,6 +4,6 @@ export class GetAllAddressesService {
   private getAllAddressesInfra = new GetAllAddressesInfra();
 
   async execute() {
-    return await this.getAllAddressesInfra.execute();
+    return this.getAllAddressesInfra.execute();
   }
 }

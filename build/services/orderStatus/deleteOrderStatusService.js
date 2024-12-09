@@ -15,7 +15,7 @@ class DeleteOrderStatusService {
     deleteOrderStatus(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const orderStatusSql = new deleteOrderStatusSql_1.DeleteOrderStatusSql();
-            return yield orderStatusSql.deleteOrderStatusSql(id);
+            return orderStatusSql.deleteOrderStatusSql(id);
         });
     }
 }

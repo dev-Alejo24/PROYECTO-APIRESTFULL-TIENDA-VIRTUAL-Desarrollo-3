@@ -1,4 +1,4 @@
-import User from "../models/userModel";
+import User from '../models/userModel';
 
 export class CreateUserSql {
     async createUserSql(data:Partial<User>):Promise<User> {
@@ -7,4 +7,3 @@ export class CreateUserSql {
       return user;
     }
   }
-  

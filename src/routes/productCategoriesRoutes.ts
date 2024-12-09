@@ -1,10 +1,10 @@
 import { Router } from 'express';
+import { body, param } from 'express-validator';
 import { getProductCategories, getProductCategoryById } from '../controllers/productCategories/getProductCategoryController';
 import { createProductCategory } from '../controllers/productCategories/createProductCategoryController';
 import { updateProductCategory } from '../controllers/productCategories/updateProductCategoryController';
 import { deleteProductCategory } from '../controllers/productCategories/deleteProductCategoryController';
 import authMiddleware from '../middlewares/authMiddleware';
-import { body, param } from 'express-validator';
 
 const router = Router();
 

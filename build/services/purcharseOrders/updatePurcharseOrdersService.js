@@ -19,7 +19,7 @@ class UpdatePurchaseOrdersService {
         return __awaiter(this, void 0, void 0, function* () {
             if (!id || !data)
                 throw new Error('El ID y los datos son requeridos.');
-            return yield this.purchaseOrdersSql.updatePurchaseOrder(id, data);
+            return this.purchaseOrdersSql.updatePurchaseOrder(id, data);
         });
     }
 }

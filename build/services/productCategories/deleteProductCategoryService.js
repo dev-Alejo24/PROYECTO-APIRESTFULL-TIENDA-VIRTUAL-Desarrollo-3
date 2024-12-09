@@ -15,7 +15,7 @@ class DeleteProductCategoryService {
     deleteProductCategory(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const categorySql = new deleteProductCategorySql_1.DeleteProductCategorySql();
-            return yield categorySql.deleteProductCategorySql(id);
+            return categorySql.deleteProductCategorySql(id);
         });
     }
 }

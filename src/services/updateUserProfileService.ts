@@ -18,7 +18,7 @@ export const updateUserProfile = async (
     typeId: number;
     identificationNumber: string;
     addressId: number;
-  }>
+  }>,
 ): Promise<any> => {
   const user = new GetUserProfileSql();
   const userResponse = await user.getUserProfileSql(userId);
@@ -27,7 +27,7 @@ export const updateUserProfile = async (
     throw new Error('Usuario no encontrado');
   }
 
-  let passwordFormat = '';
+  let passwordFormat : string;
   if (updateData.password) {
     passwordFormat = await bcrypt.hash(updateData.password, 10);
   }

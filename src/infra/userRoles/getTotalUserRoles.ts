@@ -15,7 +15,7 @@ export class GetTotalUserRolesSql {
         type: QueryTypes.SELECT,
       });
 
-      const total = (results[0] as any).total;
+      const { total } = results[0] as any;
       return total;
     } catch (error) {
       console.error('Error ejecutando la consulta:', error);

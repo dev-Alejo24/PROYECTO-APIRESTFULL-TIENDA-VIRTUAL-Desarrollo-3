@@ -17,7 +17,7 @@ class CreateAddressService {
     }
     execute(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.createAddressInfra.execute(data);
+            return this.createAddressInfra.execute(data);
         });
     }
 }

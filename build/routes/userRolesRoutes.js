@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const express_validator_1 = require("express-validator");
 const getUserRole_1 = require("../controllers/userRoles/getUserRole");
 const getTotalUserRoles_1 = require("../controllers/userRoles/getTotalUserRoles");
 const deleteUserRole_1 = require("../controllers/userRoles/deleteUserRole");
 const updateUserRole_1 = require("../controllers/userRoles/updateUserRole");
 const createUserRoles_1 = require("../controllers/userRoles/createUserRoles");
 const authMiddleware_1 = __importDefault(require("../middlewares/authMiddleware"));
-const express_validator_1 = require("express-validator");
 const router = (0, express_1.Router)();
 router.get('/api/users/userRoles/:userId', [
     (0, express_validator_1.param)('userId').isNumeric().withMessage('El ID del usuario debe ser un número'),

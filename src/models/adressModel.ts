@@ -1,7 +1,7 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
 
-class Address extends Model{
+class Address extends Model {
     public id!: number;
 
     public street!: string;

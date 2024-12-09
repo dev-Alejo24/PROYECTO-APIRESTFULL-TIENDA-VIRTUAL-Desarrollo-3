@@ -13,13 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateOrderStatusSql = void 0;
-const database_1 = __importDefault(require("../../config/database"));
 const sequelize_1 = require("sequelize");
+const database_1 = __importDefault(require("../../config/database"));
 class CreateOrderStatusSql {
     createOrderStatusSql(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "INSERT INTO orderStatus (name, createdAt, updatedAt) VALUES (:name, NOW(), NOW())";
-            return yield database_1.default.query(query, {
+            const query = 'INSERT INTO orderStatus (name, createdAt, updatedAt) VALUES (:name, NOW(), NOW())';
+            return database_1.default.query(query, {
                 replacements: data,
                 type: sequelize_1.QueryTypes.INSERT,
             });

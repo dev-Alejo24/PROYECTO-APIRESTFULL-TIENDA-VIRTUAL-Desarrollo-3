@@ -12,9 +12,9 @@ export const getTotalUserRoles = async (req: Request, res: Response): Promise<an
     const userRoleService = new GetUserRolesService();
     const totalRoles = await userRoleService.getTotalUserRoles(userId);
 
-    res.status(200).json({ userId, totalRoles });
+    return res.status(200).json({ userId, totalRoles });
   } catch (error: any) {
     console.error('Error al calcular el total de roles:', error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };

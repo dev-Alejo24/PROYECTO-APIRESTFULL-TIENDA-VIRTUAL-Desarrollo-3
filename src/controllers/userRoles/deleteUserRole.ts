@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { DeleteUserRoleService } from '../../services/userRoles/deleteUserRoleService'
+import { DeleteUserRoleService } from '../../services/userRoles/deleteUserRoleService';
 
 export const deleteUserRole = async (req: Request, res: Response): Promise<void> => {
   try {

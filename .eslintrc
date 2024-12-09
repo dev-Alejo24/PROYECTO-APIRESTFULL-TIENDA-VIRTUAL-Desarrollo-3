@@ -13,7 +13,7 @@
       "sourceType": "module" // especifica donde estan los archivos
     },
     "rules": {
-      "no-console": "off", // permite los console.log
+      "no-console": "off", // permite los console.log(off)
       "import/prefer-default-export": "off",
       "class-methods-use-this": "off",
       "import/no-extraneous-dependencies": "off",
@@ -27,6 +27,7 @@
       "init-declarations": ["error", "never"], //para desabilitar inicializacion en las tuplas
       "quotes": ["error", "single"], // solo permite comillas simples
       "max-classes-per-file": "off", // permite varias clases en un solo archivo
-      "@typescript-eslint/indent": "off" // quita el espaciado especifico del lenguaje
+      "@typescript-eslint/indent": "off", // quita el espaciado especifico del lenguaje
+       "@typescript-eslint/explicit-module-boundary-types": "off" // pendiente act
     }
   }

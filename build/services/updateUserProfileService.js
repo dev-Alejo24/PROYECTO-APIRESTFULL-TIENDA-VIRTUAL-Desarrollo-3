@@ -26,7 +26,7 @@ const updateUserProfile = (userId, updateData) => __awaiter(void 0, void 0, void
     if (!userResponse) {
         throw new Error('Usuario no encontrado');
     }
-    let passwordFormat = '';
+    let passwordFormat;
     if (updateData.password) {
         passwordFormat = yield bcryptjs_1.default.hash(updateData.password, 10);
     }

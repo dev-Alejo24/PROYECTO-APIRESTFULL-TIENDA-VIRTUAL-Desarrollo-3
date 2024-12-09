@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { body } from "express-validator";
+import { Router } from 'express';
+import { body } from 'express-validator';
 import { register } from '../controllers/register';
 import { login } from '../controllers/login';
 import { getProfile } from '../controllers/getProfile';
@@ -26,16 +26,15 @@ router.post('/api/users/login', [
   body('email').isEmail().trim().withMessage('Debe ser un email válido'),
   body('password').notEmpty().withMessage('La contraseña es requerida'),
 ], login);
-  
+
   router.post('/api/users/login', [
     body('email').isEmail().trim().withMessage('Debe ser un email válido'),
     body('password').notEmpty().withMessage('La contraseña es requerida'),
   ], login);
-  
+
   // Rutas protegidas
   router.get('/api/users/profile', authMiddleware, getProfile);
   router.put('/api/users/profile/:userId', authMiddleware, updateProfile);
   router.delete('/api/users/profile/:userId', authMiddleware, deleteProfile);
 
   export default router;
-  

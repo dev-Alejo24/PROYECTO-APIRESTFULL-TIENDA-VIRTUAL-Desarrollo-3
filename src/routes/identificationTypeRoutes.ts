@@ -20,7 +20,7 @@ router.get('/api/identification-types', (req, res) => getAllIdentificationTypesC
 router.get(
   '/api/identification-types/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  (req, res) => getIdentificationTypeByIdController.handle(req, res)
+  (req, res) => getIdentificationTypeByIdController.handle(req, res),
 );
 
 // Rutas públicas
@@ -29,7 +29,7 @@ router.post(
   [
     body('type').notEmpty().withMessage('El tipo de identificación es obligatorio.'),
   ],
-  (req, res) => createIdentificationTypeController.handle(req, res)
+  (req, res) => createIdentificationTypeController.handle(req, res),
 );
 
 router.put(
@@ -38,13 +38,13 @@ router.put(
     param('id').isNumeric().withMessage('El ID debe ser un número.'),
     body('type').optional(),
   ],
-  (req, res) => updateIdentificationTypeController.handle(req, res)
+  (req, res) => updateIdentificationTypeController.handle(req, res),
 );
 
 router.delete(
   '/api/identification-types/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  (req, res) => deleteIdentificationTypeController.handle(req, res)
+  (req, res) => deleteIdentificationTypeController.handle(req, res),
 );
 
 export default router;

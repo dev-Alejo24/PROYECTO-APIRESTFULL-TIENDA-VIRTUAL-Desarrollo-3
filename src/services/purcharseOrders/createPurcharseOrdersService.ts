@@ -5,6 +5,6 @@ export class CreatePurchaseOrdersService {
 
   async createPurchaseOrder(data: Partial<any>) {
     if (!data) throw new Error('Los datos de la orden de compra son requeridos.');
-    return await this.purchaseOrdersSql.createPurchaseOrder(data);
+    return this.purchaseOrdersSql.createPurchaseOrder(data);
   }
 }

@@ -4,6 +4,6 @@ export class CreateIdentificationTypeService {
   private createIdentificationTypeInfra = new CreateIdentificationTypeInfra();
 
   async execute(data: any) {
-    return await this.createIdentificationTypeInfra.execute(data);
+    return this.createIdentificationTypeInfra.execute(data);
   }
 }

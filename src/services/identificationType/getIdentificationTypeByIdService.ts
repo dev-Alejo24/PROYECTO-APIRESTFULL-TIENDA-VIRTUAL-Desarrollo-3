@@ -4,6 +4,6 @@ export class GetIdentificationTypeByIdService {
   private getIdentificationTypeByIdInfra = new GetIdentificationTypeByIdInfra();
 
   async execute(id: number) {
-    return await this.getIdentificationTypeByIdInfra.execute(id);
+    return this.getIdentificationTypeByIdInfra.execute(id);
   }
 }

@@ -15,7 +15,7 @@ class CreateProductService {
     createProduct(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const productSql = new createProductSql_1.CreateProductSql();
-            return yield productSql.createProductSql(data);
+            return productSql.createProductSql(data);
         });
     }
 }

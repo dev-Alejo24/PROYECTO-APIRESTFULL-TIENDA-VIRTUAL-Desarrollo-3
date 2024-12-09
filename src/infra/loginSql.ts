@@ -1,4 +1,4 @@
-import User from "../models/userModel";
+import User from '../models/userModel';
 
 export class GetLoginSql {
     async getLoginSql(email: string): Promise<User | null> {

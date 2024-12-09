@@ -18,14 +18,14 @@ const database_1 = __importDefault(require("../../config/database"));
 class GetRoleSql {
     getRolesSql() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM roles";
+            const query = 'SELECT * FROM roles';
             const roles = yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
             return roles;
         });
     }
     getRoleByIdSql(roleId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM roles WHERE id = :roleId";
+            const query = 'SELECT * FROM roles WHERE id = :roleId';
             const role = yield database_1.default.query(query, {
                 replacements: { roleId },
                 type: sequelize_1.QueryTypes.SELECT,
@@ -35,14 +35,14 @@ class GetRoleSql {
     }
     countRoles() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT COUNT(*) as total FROM roles";
+            const query = 'SELECT COUNT(*) as total FROM roles';
             const result = yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
             return result[0].total;
         });
     }
     getRolesByName(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM roles WHERE LOWER(name) LIKE LOWER(:name)";
+            const query = 'SELECT * FROM roles WHERE LOWER(name) LIKE LOWER(:name)';
             const roles = yield database_1.default.query(query, {
                 replacements: { name: `%${name}%` },
                 type: sequelize_1.QueryTypes.SELECT,

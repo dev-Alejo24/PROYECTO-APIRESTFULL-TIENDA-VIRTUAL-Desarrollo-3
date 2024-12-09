@@ -16,9 +16,9 @@ export const getUserRoles = async (req: Request, res: Response): Promise<any> =>
       return res.status(404).json({ message: 'No se encontraron roles para el usuario.' });
     }
 
-    res.status(200).json({ roles });
+    return res.status(200).json({ roles });
   } catch (error: any) {
     console.error(error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };

@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const express_validator_1 = require("express-validator");
 const getProductController_1 = require("../controllers/products/getProductController");
 const createProductController_1 = require("../controllers/products/createProductController");
 const updateProductController_1 = require("../controllers/products/updateProductController");
 const deleteProductController_1 = require("../controllers/products/deleteProductController");
 const authMiddleware_1 = __importDefault(require("../middlewares/authMiddleware"));
-const express_validator_1 = require("express-validator");
 const router = (0, express_1.Router)();
 router.get('/api/products', getProductController_1.getProducts);
 router.get('/api/products/:id', [

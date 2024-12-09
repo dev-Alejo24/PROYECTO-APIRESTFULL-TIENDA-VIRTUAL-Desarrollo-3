@@ -1,3 +1,6 @@
+## Michael Papamija
+### Jaider Canndelo
+
 src/
 ├── app.ts
 ├── config/

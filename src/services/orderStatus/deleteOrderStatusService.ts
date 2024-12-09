@@ -3,6 +3,6 @@ import { DeleteOrderStatusSql } from '../../infra/orderStatus/deleteOrderStatusS
 export class DeleteOrderStatusService {
   async deleteOrderStatus(id: number): Promise<any> {
     const orderStatusSql = new DeleteOrderStatusSql();
-    return await orderStatusSql.deleteOrderStatusSql(id);
+    return orderStatusSql.deleteOrderStatusSql(id);
   }
 }

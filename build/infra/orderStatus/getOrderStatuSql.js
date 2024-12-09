@@ -18,13 +18,13 @@ const database_1 = __importDefault(require("../../config/database"));
 class GetOrderStatusSql {
     getOrderStatusesSql() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM orderStatus";
-            return yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
+            const query = 'SELECT * FROM orderStatus';
+            return database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
         });
     }
     getOrderStatusByIdSql(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM orderStatus WHERE id = :id";
+            const query = 'SELECT * FROM orderStatus WHERE id = :id';
             const [result] = yield database_1.default.query(query, {
                 replacements: { id },
                 type: sequelize_1.QueryTypes.SELECT,

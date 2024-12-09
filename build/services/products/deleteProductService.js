@@ -15,7 +15,7 @@ class DeleteProductService {
     deleteProduct(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const productSql = new deleteProductSql_1.DeleteProductSql();
-            return yield productSql.deleteProductSql(id);
+            return productSql.deleteProductSql(id);
         });
     }
 }

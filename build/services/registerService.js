@@ -18,14 +18,13 @@ const loginSql_1 = require("../infra/loginSql");
 const createUser_1 = require("../infra/createUser");
 const createPeople_1 = require("../infra/createPeople");
 const registerUser = (userData) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, middleName, lastName, phone, email, password, typeId, identificationNumber, addressId } = userData;
+    const { firstName, middleName, lastName, phone, email, password, typeId, identificationNumber, addressId, } = userData;
     const userSelect = new loginSql_1.GetLoginSql();
     const existingUser = yield userSelect.getLoginSql(email);
     if (existingUser) {
         throw new Error('Usuario existente');
     }
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-    ;
     const createUser = new createUser_1.CreateUserSql();
     const createPeopleSql = new createPeople_1.CreatePeopleSql();
     const dataUser = {
@@ -42,7 +41,7 @@ const registerUser = (userData) => __awaiter(void 0, void 0, void 0, function* (
             lastName,
             email,
             phone,
-            addressId
+            addressId,
         },
     };
     const user = yield createUser.createUserSql(dataUser.user);

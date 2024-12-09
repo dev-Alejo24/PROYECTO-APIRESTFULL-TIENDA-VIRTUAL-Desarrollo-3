@@ -14,9 +14,11 @@ const updateProductService_1 = require("../../services/products/updateProductSer
 const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const { name, description, price, idCategory } = req.body;
+        const { name, description, price, idCategory, } = req.body;
         const service = new updateProductService_1.UpdateProductService();
-        const updatedProduct = yield service.updateProduct(Number(id), { name, description, price, idCategory });
+        const updatedProduct = yield service.updateProduct(Number(id), {
+            name, description, price, idCategory,
+        });
         res.status(200).json(updatedProduct);
     }
     catch (error) {

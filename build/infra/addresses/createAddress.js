@@ -17,7 +17,7 @@ const adressModel_1 = __importDefault(require("../../models/adressModel"));
 class CreateAddressInfra {
     execute(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield adressModel_1.default.create(data);
+            return adressModel_1.default.create(data);
         });
     }
 }

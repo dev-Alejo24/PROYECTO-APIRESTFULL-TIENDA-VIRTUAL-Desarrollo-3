@@ -19,7 +19,7 @@ class CreateOrderDetailsService {
         return __awaiter(this, void 0, void 0, function* () {
             if (!data)
                 throw new Error('Los datos del detalle del pedido son requeridos.');
-            return yield this.orderDetailsSql.createOrderDetail(data);
+            return this.orderDetailsSql.createOrderDetail(data);
         });
     }
 }

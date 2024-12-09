@@ -5,6 +5,6 @@ export class UpdatePurchaseOrdersService {
 
   async updatePurchaseOrder(id: number, data: Partial<any>) {
     if (!id || !data) throw new Error('El ID y los datos son requeridos.');
-    return await this.purchaseOrdersSql.updatePurchaseOrder(id, data);
+    return this.purchaseOrdersSql.updatePurchaseOrder(id, data);
   }
 }

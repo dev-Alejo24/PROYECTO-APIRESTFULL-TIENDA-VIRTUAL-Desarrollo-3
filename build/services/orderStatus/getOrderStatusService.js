@@ -15,13 +15,13 @@ class GetOrderStatusService {
     getAllOrderStatuses() {
         return __awaiter(this, void 0, void 0, function* () {
             const orderStatusSql = new getOrderStatuSql_1.GetOrderStatusSql();
-            return yield orderStatusSql.getOrderStatusesSql();
+            return orderStatusSql.getOrderStatusesSql();
         });
     }
     getOrderStatusById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const orderStatusSql = new getOrderStatuSql_1.GetOrderStatusSql();
-            return yield orderStatusSql.getOrderStatusByIdSql(id);
+            return orderStatusSql.getOrderStatusByIdSql(id);
         });
     }
 }

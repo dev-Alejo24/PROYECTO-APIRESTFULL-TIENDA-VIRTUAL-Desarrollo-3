@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteRoleSql = void 0;
-const database_1 = __importDefault(require("../../config/database"));
 const sequelize_1 = require("sequelize");
+const database_1 = __importDefault(require("../../config/database"));
 class DeleteRoleSql {
     deleteRoleSql(roleId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "DELETE FROM roles WHERE id = :roleId";
+            const query = 'DELETE FROM roles WHERE id = :roleId';
             const result = yield database_1.default.query(query, {
                 replacements: { roleId },
                 type: sequelize_1.QueryTypes.DELETE,

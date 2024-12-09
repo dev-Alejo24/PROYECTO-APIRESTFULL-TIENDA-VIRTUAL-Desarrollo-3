@@ -1,14 +1,13 @@
 import { Router } from 'express';
+import { body, param } from 'express-validator';
 import { getUserRoles } from '../controllers/userRoles/getUserRole';
-import {  getTotalUserRoles } from '../controllers/userRoles/getTotalUserRoles';
+import { getTotalUserRoles } from '../controllers/userRoles/getTotalUserRoles';
 import { deleteUserRole } from '../controllers/userRoles/deleteUserRole';
 import { updateUserRoles } from '../controllers/userRoles/updateUserRole';
 import { createUserRole } from '../controllers/userRoles/createUserRoles';
-import  authMiddleware  from '../middlewares/authMiddleware';
-import { body, param } from 'express-validator';
+import authMiddleware from '../middlewares/authMiddleware';
 
 const router = Router();
-
 
 // Rutas privadas
 router.get('/api/users/userRoles/:userId', [
@@ -20,13 +19,12 @@ router.get('/api/users/userRoles/lista/:userId', [
   param('userId').isNumeric().withMessage('El ID del usuario debe ser un número'),
 ], authMiddleware, getUserRoles);
 
-
 // calcular el total de roles asignados de un usuario específico
 router.get(
   '/api/users/userRoles/total/:userId',
   [
     param('userId').isNumeric().withMessage('El ID del usuario debe ser un número'),
-  ], authMiddleware, getTotalUserRoles
+  ], authMiddleware, getTotalUserRoles,
 );
 
 // Rutas protegidas (requieren autenticación)

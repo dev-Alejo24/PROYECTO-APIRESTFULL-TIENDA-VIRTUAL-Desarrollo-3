@@ -19,14 +19,14 @@ OrderDetails.init({
         type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         references: {
             model: purcharseOrdersModel_1.default,
-            key: "id",
+            key: 'id',
         },
     },
     productId: {
         type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         references: {
             model: productsModel_1.default,
-            key: "id",
+            key: 'id',
         },
     },
     quanty: {
@@ -38,7 +38,7 @@ OrderDetails.init({
         allowNull: false,
     },
 }, {
-    tableName: "orderDetails",
+    tableName: 'orderDetails',
     timestamps: true,
     sequelize: database_1.default,
 });

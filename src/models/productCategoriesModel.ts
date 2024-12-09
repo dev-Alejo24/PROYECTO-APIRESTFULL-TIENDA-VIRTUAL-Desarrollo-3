@@ -1,5 +1,5 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
 
 class ProductCategoires extends Model {
     public id!: number;
@@ -33,7 +33,7 @@ ProductCategoires.init(
         tableName: 'productCategories',
         sequelize,
         timestamps: true,
-    }
+    },
 );
 
 export default ProductCategoires;

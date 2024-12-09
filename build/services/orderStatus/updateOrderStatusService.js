@@ -15,7 +15,7 @@ class UpdateOrderStatusService {
     updateOrderStatus(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
             const orderStatusSql = new updateOrderStatusSql_1.UpdateOrderStatusSql();
-            return yield orderStatusSql.updateOrderStatusSql(id, data);
+            return orderStatusSql.updateOrderStatusSql(id, data);
         });
     }
 }

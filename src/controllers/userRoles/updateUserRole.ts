@@ -7,7 +7,7 @@ export const updateUserRoles = async (req: Request, res: Response): Promise<any>
     const { roleIds } = req.body;
 
     // Validación básica
-    if (isNaN(userId)) {
+    if (Number.isNaN(userId)) {
       return res.status(400).json({ error: 'El ID del usuario no es válido.' });
     }
 
@@ -18,9 +18,9 @@ export const updateUserRoles = async (req: Request, res: Response): Promise<any>
     const userRoleService = new UpdateUserRolesService();
     const updatedCount = await userRoleService.updateUserRoles(userId, roleIds);
 
-    res.status(200).json({ message: 'Roles actualizados correctamente.', updatedCount });
+    return res.status(200).json({ message: 'Roles actualizados correctamente.', updatedCount });
   } catch (error: any) {
     console.error('Error en updateUserRoles:', error);
-    res.status(500).json({ error: error.message || 'Error interno del servidor.' });
+    return res.status(500).json({ error: error.message || 'Error interno del servidor.' });
   }
 };

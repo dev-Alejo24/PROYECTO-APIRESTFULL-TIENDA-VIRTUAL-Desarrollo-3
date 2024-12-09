@@ -17,14 +17,14 @@ class GetOrderDetailsService {
     }
     getAllOrderDetails() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.orderDetailsSql.fetchAllOrderDetails();
+            return this.orderDetailsSql.fetchAllOrderDetails();
         });
     }
     getOrderDetailById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!id)
                 throw new Error('El ID es requerido.');
-            return yield this.orderDetailsSql.fetchOrderDetailById(id);
+            return this.orderDetailsSql.fetchOrderDetailById(id);
         });
     }
 }

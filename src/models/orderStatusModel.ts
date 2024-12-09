@@ -1,5 +1,5 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database"; // importacion correcta
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database'; // importacion correcta
 
 class OrderStatus extends Model {
     public id!: number;
@@ -26,8 +26,8 @@ OrderStatus.init(
     {
        tableName: 'OrderStatus',
        sequelize,
-       timestamps: true
-    }
+       timestamps: true,
+    },
 );
 
 export default OrderStatus;

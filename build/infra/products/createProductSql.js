@@ -18,8 +18,8 @@ const database_1 = __importDefault(require("../../config/database"));
 class CreateProductSql {
     createProductSql(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "INSERT INTO products (name, description, price, idCategory, createdAt, updatedAt) VALUES (:name, :description, :price, :idCategory, NOW(), NOW())";
-            return yield database_1.default.query(query, {
+            const query = 'INSERT INTO products (name, description, price, idCategory, createdAt, updatedAt) VALUES (:name, :description, :price, :idCategory, NOW(), NOW())';
+            return database_1.default.query(query, {
                 replacements: data,
                 type: sequelize_1.QueryTypes.INSERT,
             });

@@ -19,14 +19,14 @@ UserRoles.init({
         type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         references: {
             model: userModel_1.default,
-            key: "id",
+            key: 'id',
         },
     },
     roleId: {
         type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         references: {
             model: rolesModel_1.default,
-            key: "id",
+            key: 'id',
         },
     },
 }, {

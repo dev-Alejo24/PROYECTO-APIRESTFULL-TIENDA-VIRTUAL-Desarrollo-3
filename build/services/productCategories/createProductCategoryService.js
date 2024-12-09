@@ -15,7 +15,7 @@ class CreateProductCategoryService {
     createProductCategory(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const categorySql = new createProductCategorySql_1.CreateProductCategorySql();
-            return yield categorySql.createProductCategorySql(data);
+            return categorySql.createProductCategorySql(data);
         });
     }
 }

@@ -17,7 +17,7 @@ const identificationTypeModel_1 = __importDefault(require("../../models/identifi
 class CreateIdentificationTypeInfra {
     execute(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield identificationTypeModel_1.default.create(data);
+            return identificationTypeModel_1.default.create(data);
         });
     }
 }

@@ -1,9 +1,9 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
-import User from "./userModel";
-import OrderStatus from "./orderStatusModel";  // model OrderStatus
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
+import User from './userModel';
+import OrderStatus from './orderStatusModel'; // model OrderStatus
 
-class PurcharseOrders extends Model{
+class PurcharseOrders extends Model {
     public id!: number;
 
     public supplierId!: number;
@@ -13,7 +13,7 @@ class PurcharseOrders extends Model{
     public readonly createdAt!: Date;
 
     public readonly updatedAt!: Date;
-};
+}
 
 PurcharseOrders.init(
     {
@@ -27,7 +27,7 @@ PurcharseOrders.init(
             allowNull: false,
             references: {
                 model: User, // busca al user
-                key: "id",
+                key: 'id',
             },
         },
         statusId: {
@@ -35,7 +35,7 @@ PurcharseOrders.init(
             allowNull: false,
             references: {
                 model: OrderStatus,
-                key: "id",
+                key: 'id',
             },
         },
     },
@@ -43,7 +43,7 @@ PurcharseOrders.init(
         tableName: 'purcharseOrders',
         sequelize,
         timestamps: true,
-    }
-)
+    },
+);
 
 export default PurcharseOrders;

@@ -26,7 +26,7 @@ Products.init({
         type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
         references: {
             model: productCategoriesModel_1.default,
-            key: "id"
+            key: 'id',
         },
     },
 }, {

@@ -4,6 +4,6 @@ export class UpdateAddressService {
   private updateAddressInfra = new UpdateAddressInfra();
 
   async execute(id: number, data: any) {
-    return await this.updateAddressInfra.execute(id, data);
+    return this.updateAddressInfra.execute(id, data);
   }
 }

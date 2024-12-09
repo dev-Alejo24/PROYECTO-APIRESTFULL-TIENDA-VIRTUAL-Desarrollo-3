@@ -1,7 +1,6 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
-import ProductCategoires from "./productCategoriesModel"; // modelo
-
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
+import ProductCategoires from './productCategoriesModel'; // modelo
 
 class Products extends Model {
     public id!: number;
@@ -17,7 +16,6 @@ class Products extends Model {
     public readonly craetedAt!: Date;
 
     public readonly updatedAt!: Date;
-
 }
 
 Products.init(
@@ -39,7 +37,7 @@ Products.init(
             type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: ProductCategoires,
-                key: "id"
+                key: 'id',
             },
         },
     },
@@ -47,7 +45,7 @@ Products.init(
         tableName: 'products',
         sequelize,
         timestamps: true,
-    }
+    },
 );
 
 export default Products;

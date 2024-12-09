@@ -15,7 +15,7 @@ class CreateOrderStatusService {
     createOrderStatus(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const orderStatusSql = new createOrderStatusSql_1.CreateOrderStatusSql();
-            return yield orderStatusSql.createOrderStatusSql(data);
+            return orderStatusSql.createOrderStatusSql(data);
         });
     }
 }

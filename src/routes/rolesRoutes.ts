@@ -10,7 +10,6 @@ import authMiddleware from '../middlewares/authMiddleware';
 
 const router: Router = Router();
 
-
 // Rutas privadas
 
 // Ruta para obtener todos los roles
@@ -24,7 +23,7 @@ router.get('/api/users/profile/roles/get:roleId', [
 // Crear un nuevo rol
 router.post('/api/users/profile/roles/create', [
     body('name').notEmpty().withMessage('El nombre del rol es requerido'), // Validación del cuerpo
-    //body('description').optional().isString().withMessage('La descripción debe ser una cadena'),
+    // body('description').optional().isString().withMessage('La descripción debe ser una cadena'),
 ], authMiddleware, createRole);
 
 // Actualizar un rol por ID
@@ -38,7 +37,6 @@ router.put('/api/users/profile/roles/update/:roleId', [
 router.delete('/api/users/profile/roles/delete/:roleId', [
     param('roleId').isNumeric().withMessage('El ID del rol debe ser un número'),
 ], authMiddleware, deleteRole);
-
 
 // Contar la cantidad total de roles
 router.get('/api/users/profile/roles/count', authMiddleware, countRoles);

@@ -15,7 +15,7 @@ class UpdateProductCategoryService {
     updateProductCategory(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
             const categorySql = new updateProductCategorySql_1.UpdateProductCategorySql();
-            return yield categorySql.updateProductCategorySql(id, data);
+            return categorySql.updateProductCategorySql(id, data);
         });
     }
 }

@@ -20,7 +20,7 @@ router.get('/api/addresses', getAllAddressesController.handle.bind(getAllAddress
 router.get(
   '/api/addresses/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  getAddressByIdController.handle.bind(getAddressByIdController)
+  getAddressByIdController.handle.bind(getAddressByIdController),
 );
 
 // Rutas públicas
@@ -32,7 +32,7 @@ router.post(
     body('state').optional(),
     body('zipCode').optional().isLength({ max: 10 }).withMessage('El código postal debe tener como máximo 10 caracteres.'),
   ],
-  createAddressController.handle.bind(createAddressController)
+  createAddressController.handle.bind(createAddressController),
 );
 
 router.put(
@@ -44,13 +44,13 @@ router.put(
     body('state').optional(),
     body('zipCode').optional().isLength({ max: 10 }).withMessage('El código postal debe tener como máximo 10 caracteres.'),
   ],
-  updateAddressController.handle.bind(updateAddressController)
+  updateAddressController.handle.bind(updateAddressController),
 );
 
 router.delete(
   '/api/addresses/:id',
   [param('id').isNumeric().withMessage('El ID debe ser un número.')],
-  deleteAddressController.handle.bind(deleteAddressController)
+  deleteAddressController.handle.bind(deleteAddressController),
 );
 
 export default router;

@@ -3,6 +3,6 @@ import { UpdateProductCategorySql } from '../../infra/productCategories/updatePr
 export class UpdateProductCategoryService {
   async updateProductCategory(id: number, data: { categoryName: string, description: string }): Promise<any> {
     const categorySql = new UpdateProductCategorySql();
-    return await categorySql.updateProductCategorySql(id, data);
+    return categorySql.updateProductCategorySql(id, data);
   }
 }

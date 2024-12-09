@@ -17,7 +17,7 @@ class GetAllAddressesService {
     }
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.getAllAddressesInfra.execute();
+            return this.getAllAddressesInfra.execute();
         });
     }
 }

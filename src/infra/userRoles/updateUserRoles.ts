@@ -1,6 +1,6 @@
+import { Transaction } from 'sequelize';
 import UserRole from '../../models/userRolesModel';
 import Role from '../../models/rolesModel'; // Modelo para validar roles
-import { Transaction } from 'sequelize';
 import sequelize from '../../config/database';
 
 export class UpdateUserRolesSql {

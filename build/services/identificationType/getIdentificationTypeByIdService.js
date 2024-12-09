@@ -17,7 +17,7 @@ class GetIdentificationTypeByIdService {
     }
     execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.getIdentificationTypeByIdInfra.execute(id);
+            return this.getIdentificationTypeByIdInfra.execute(id);
         });
     }
 }

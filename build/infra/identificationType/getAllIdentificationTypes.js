@@ -18,8 +18,8 @@ const database_1 = __importDefault(require("../../config/database"));
 class GetAllIdentificationTypesInfra {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = `SELECT * FROM identificationType`;
-            return yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
+            const query = 'SELECT * FROM identificationType';
+            return database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
         });
     }
 }

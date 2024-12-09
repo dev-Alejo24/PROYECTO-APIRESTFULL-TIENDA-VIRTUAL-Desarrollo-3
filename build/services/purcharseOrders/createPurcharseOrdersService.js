@@ -19,7 +19,7 @@ class CreatePurchaseOrdersService {
         return __awaiter(this, void 0, void 0, function* () {
             if (!data)
                 throw new Error('Los datos de la orden de compra son requeridos.');
-            return yield this.purchaseOrdersSql.createPurchaseOrder(data);
+            return this.purchaseOrdersSql.createPurchaseOrder(data);
         });
     }
 }

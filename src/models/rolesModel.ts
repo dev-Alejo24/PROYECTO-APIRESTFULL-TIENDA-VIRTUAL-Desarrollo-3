@@ -1,7 +1,7 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database"
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
 
-class Roles extends Model{
+class Roles extends Model {
     public id!: number;
 
     public name!: string;
@@ -27,7 +27,7 @@ Roles.init(
         tableName: 'roles',
         sequelize,
         timestamps: true,
-    }
+    },
 );
 
 export default Roles;

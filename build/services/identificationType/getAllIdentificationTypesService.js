@@ -22,7 +22,7 @@ class GetAllIdentificationTypesService {
                 return types;
             }
             catch (error) {
-                throw new Error('Error al obtener los tipos de identificación: ' + error.message);
+                throw new Error(`Error al obtener los tipos de identificación: ${error.message}`);
             }
         });
     }

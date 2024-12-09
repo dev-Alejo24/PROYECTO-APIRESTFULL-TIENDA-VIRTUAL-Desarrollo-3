@@ -17,7 +17,7 @@ class DeleteIdentificationTypeService {
     }
     execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.deleteIdentificationTypeInfra.execute(id);
+            return this.deleteIdentificationTypeInfra.execute(id);
         });
     }
 }

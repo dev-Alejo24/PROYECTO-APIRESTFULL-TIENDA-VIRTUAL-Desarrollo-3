@@ -1,9 +1,9 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
 
 class User extends Model {
-    public id!: number
-    
+    public id!: number;
+
   public email!: string;
 
   public password!: string;
@@ -12,6 +12,7 @@ class User extends Model {
   public readonly createdAt!: Date;
 
   public readonly updatedAt!: Date;
+
   people: any;
 }
 
@@ -38,5 +39,5 @@ User.init(
       timestamps: true, // Habilitar timestamps automáticos
     },
   );
-  
+
 export default User;

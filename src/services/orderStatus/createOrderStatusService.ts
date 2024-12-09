@@ -3,6 +3,6 @@ import { CreateOrderStatusSql } from '../../infra/orderStatus/createOrderStatusS
 export class CreateOrderStatusService {
   async createOrderStatus(data: { name: string }): Promise<any> {
     const orderStatusSql = new CreateOrderStatusSql();
-    return await orderStatusSql.createOrderStatusSql(data);
+    return orderStatusSql.createOrderStatusSql(data);
   }
 }

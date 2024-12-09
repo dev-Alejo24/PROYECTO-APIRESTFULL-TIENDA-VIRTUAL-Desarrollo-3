@@ -1,4 +1,4 @@
-import People from "../models/popleModel";
+import People from '../models/popleModel';
 
 export class CreatePeopleSql {
     async createPeopleSql(data:Partial<People>) :Promise<People> {
@@ -7,4 +7,3 @@ export class CreatePeopleSql {
       return user;
     }
   }
-  

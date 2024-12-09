@@ -3,6 +3,6 @@ import { DeleteProductCategorySql } from '../../infra/productCategories/deletePr
 export class DeleteProductCategoryService {
   async deleteProductCategory(id: number): Promise<any> {
     const categorySql = new DeleteProductCategorySql();
-    return await categorySql.deleteProductCategorySql(id);
+    return categorySql.deleteProductCategorySql(id);
   }
 }

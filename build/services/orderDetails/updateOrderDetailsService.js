@@ -19,7 +19,7 @@ class UpdateOrderDetailsService {
         return __awaiter(this, void 0, void 0, function* () {
             if (!id || !data)
                 throw new Error('El ID y los datos son requeridos.');
-            return yield this.orderDetailsSql.updateOrderDetail(id, data);
+            return this.orderDetailsSql.updateOrderDetail(id, data);
         });
     }
 }

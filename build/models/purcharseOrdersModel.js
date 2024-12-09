@@ -9,7 +9,6 @@ const userModel_1 = __importDefault(require("./userModel"));
 const orderStatusModel_1 = __importDefault(require("./orderStatusModel"));
 class PurcharseOrders extends sequelize_1.Model {
 }
-;
 PurcharseOrders.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER.UNSIGNED,
@@ -21,7 +20,7 @@ PurcharseOrders.init({
         allowNull: false,
         references: {
             model: userModel_1.default,
-            key: "id",
+            key: 'id',
         },
     },
     statusId: {
@@ -29,7 +28,7 @@ PurcharseOrders.init({
         allowNull: false,
         references: {
             model: orderStatusModel_1.default,
-            key: "id",
+            key: 'id',
         },
     },
 }, {

@@ -28,7 +28,7 @@ class GetTotalUserRolesSql {
                     replacements: { userId },
                     type: sequelize_1.QueryTypes.SELECT,
                 });
-                const total = results[0].total;
+                const { total } = results[0];
                 return total;
             }
             catch (error) {

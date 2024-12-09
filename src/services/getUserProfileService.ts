@@ -1,4 +1,4 @@
-import { UserByIdSql } from "../infra/getDataByQuerySelect"; //pendiente di no funciona
+import { UserByIdSql } from '../infra/getDataByQuerySelect'; // pendiente di no funciona
 // import {GetUserProfileSql} from '../infra/getUserProfileByUserIdSql'
 
 export class GetUserProfile {

@@ -17,7 +17,7 @@ const identificationTypeModel_1 = __importDefault(require("../../models/identifi
 class DeleteIdentificationTypeInfra {
     execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield identificationTypeModel_1.default.destroy({ where: { id } });
+            return identificationTypeModel_1.default.destroy({ where: { id } });
         });
     }
 }

@@ -15,13 +15,13 @@ class GetProductService {
     getAllProducts() {
         return __awaiter(this, void 0, void 0, function* () {
             const productSql = new getProductSql_1.GetProductSql();
-            return yield productSql.getProductsSql();
+            return productSql.getProductsSql();
         });
     }
     getProductById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const productSql = new getProductSql_1.GetProductSql();
-            return yield productSql.getProductByIdSql(id);
+            return productSql.getProductByIdSql(id);
         });
     }
 }

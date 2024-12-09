@@ -17,7 +17,7 @@ const adressModel_1 = __importDefault(require("../../models/adressModel"));
 class DeleteAddressInfra {
     execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield adressModel_1.default.destroy({ where: { id } });
+            return adressModel_1.default.destroy({ where: { id } });
         });
     }
 }

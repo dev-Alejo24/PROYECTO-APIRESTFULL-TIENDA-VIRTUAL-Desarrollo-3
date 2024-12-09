@@ -20,7 +20,7 @@ OrderStatus.init({
 }, {
     tableName: 'OrderStatus',
     sequelize: database_1.default,
-    timestamps: true
+    timestamps: true,
 });
 exports.default = OrderStatus;
 //# sourceMappingURL=orderStatusModel.js.map

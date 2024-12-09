@@ -17,14 +17,14 @@ class GetPurchaseOrdersService {
     }
     getAllPurchaseOrders() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.purchaseOrdersSql.fetchAllPurchaseOrders();
+            return this.purchaseOrdersSql.fetchAllPurchaseOrders();
         });
     }
     getPurchaseOrderById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!id)
                 throw new Error('El ID es requerido.');
-            return yield this.purchaseOrdersSql.fetchPurchaseOrderById(id);
+            return this.purchaseOrdersSql.fetchPurchaseOrderById(id);
         });
     }
 }

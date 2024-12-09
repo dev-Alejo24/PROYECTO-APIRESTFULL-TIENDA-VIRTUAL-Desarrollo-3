@@ -20,11 +20,11 @@ const getTotalUserRoles = (req, res) => __awaiter(void 0, void 0, void 0, functi
         }
         const userRoleService = new getTotalUserRolesServivce_1.GetUserRolesService();
         const totalRoles = yield userRoleService.getTotalUserRoles(userId);
-        res.status(200).json({ userId, totalRoles });
+        return res.status(200).json({ userId, totalRoles });
     }
     catch (error) {
         console.error('Error al calcular el total de roles:', error);
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
 });
 exports.getTotalUserRoles = getTotalUserRoles;

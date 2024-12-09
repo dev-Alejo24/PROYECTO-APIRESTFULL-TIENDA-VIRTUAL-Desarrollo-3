@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 import { GetUserProfile } from '../services/getUserProfileService';
 
 export const getProfile = async (req: Request, res: Response) : Promise<void> => {
@@ -11,4 +11,3 @@ export const getProfile = async (req: Request, res: Response) : Promise<void> =>
       res.status(400).json({ error: error.message });
     }
   };
-  

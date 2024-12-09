@@ -17,7 +17,7 @@ class CreateIdentificationTypeService {
     }
     execute(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.createIdentificationTypeInfra.execute(data);
+            return this.createIdentificationTypeInfra.execute(data);
         });
     }
 }

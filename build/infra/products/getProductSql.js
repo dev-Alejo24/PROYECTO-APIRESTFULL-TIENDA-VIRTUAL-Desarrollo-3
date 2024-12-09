@@ -21,12 +21,12 @@ class GetProductSql {
             const query = `SELECT p.*, c.categoryName 
                    FROM products p 
                    INNER JOIN productCategories c ON p.idCategory = c.id`;
-            return yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
+            return database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
         });
     }
     getProductByIdSql(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM products WHERE id = :id";
+            const query = 'SELECT * FROM products WHERE id = :id';
             const [result] = yield database_1.default.query(query, {
                 replacements: { id },
                 type: sequelize_1.QueryTypes.SELECT,

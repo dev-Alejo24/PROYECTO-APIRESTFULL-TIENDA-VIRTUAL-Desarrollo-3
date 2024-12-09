@@ -14,18 +14,19 @@ export const registerUser = async (userData: {
     identificationNumber: string,
     addressId: number,
 }): Promise<any> => {
-    
-    const { firstName, middleName, lastName, phone, email, password, typeId, identificationNumber, addressId } = userData;
+    const {
+ firstName, middleName, lastName, phone, email, password, typeId, identificationNumber, addressId,
+} = userData;
 
     const userSelect = new GetLoginSql();
     const existingUser = await userSelect.getLoginSql(email);
-    
+
     if (existingUser) {
         throw new Error('Usuario existente');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     interface CreateUser {
         user: {
             id?: number,
@@ -43,11 +44,11 @@ export const registerUser = async (userData: {
             phone: string,
             addressId: number;
         },
-    };
+    }
 
     const createUser = new CreateUserSql();
     const createPeopleSql = new CreatePeopleSql();
-    
+
     const dataUser : CreateUser = {
         user: {
             email,
@@ -60,22 +61,22 @@ export const registerUser = async (userData: {
             firstName,
             middleName,
             lastName,
-            email, 
+            email,
             phone,
-            addressId
+            addressId,
         },
     };
 
     const user = await createUser.createUserSql(dataUser.user);
-    
+
     dataUser.people.userId = user.dataValues.id;
-    
+
     const people = await createPeopleSql.createPeopleSql(dataUser.people);
-    
+
     const response = {
         userId: user.dataValues.id,
         peopleId: people.dataValues.id,
     };
-    
+
     return response;
-}
+};

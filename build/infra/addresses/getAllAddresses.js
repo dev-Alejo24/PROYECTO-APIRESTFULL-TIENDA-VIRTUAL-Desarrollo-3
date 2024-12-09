@@ -18,8 +18,8 @@ const database_1 = __importDefault(require("../../config/database"));
 class GetAllAddressesInfra {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = `SELECT * FROM addresses`;
-            return yield database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
+            const query = 'SELECT * FROM addresses';
+            return database_1.default.query(query, { type: sequelize_1.QueryTypes.SELECT });
         });
     }
 }

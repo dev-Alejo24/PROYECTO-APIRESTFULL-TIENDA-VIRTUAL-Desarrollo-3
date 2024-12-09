@@ -6,11 +6,11 @@ export class GetProductSql {
     const query = `SELECT p.*, c.categoryName 
                    FROM products p 
                    INNER JOIN productCategories c ON p.idCategory = c.id`;
-    return await sequelize.query(query, { type: QueryTypes.SELECT });
+    return sequelize.query(query, { type: QueryTypes.SELECT });
   }
 
   async getProductByIdSql(id: number): Promise<any> {
-    const query = "SELECT * FROM products WHERE id = :id";
+    const query = 'SELECT * FROM products WHERE id = :id';
     const [result] = await sequelize.query(query, {
       replacements: { id },
       type: QueryTypes.SELECT,

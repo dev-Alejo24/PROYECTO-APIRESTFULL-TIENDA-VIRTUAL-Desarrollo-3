@@ -17,7 +17,7 @@ class GetAddressByIdService {
     }
     execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.getAddressByIdInfra.execute(id);
+            return this.getAddressByIdInfra.execute(id);
         });
     }
 }

@@ -1,7 +1,7 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database"; // ruta de importacion correcta
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database'; // ruta de importacion correcta
 
-class IdentificationType extends Model{
+class IdentificationType extends Model {
     public id!: number;
 
     public type!: string;
@@ -9,7 +9,6 @@ class IdentificationType extends Model{
     public readonly createdAt!: Date;
 
     public readonly updatedAt!: Date;
-
 }
 
 IdentificationType.init(
@@ -31,5 +30,5 @@ IdentificationType.init(
       timestamps: true, // Habilitar timestamps automáticos
     },
   );
-  
+
 export default IdentificationType;

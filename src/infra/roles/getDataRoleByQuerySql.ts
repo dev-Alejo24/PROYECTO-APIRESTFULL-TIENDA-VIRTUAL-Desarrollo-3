@@ -1,6 +1,6 @@
 // infra/roles/getDataRoleByQuerySql
-import { QueryTypes } from "sequelize";
-import sequelize from "../../config/database";
+import { QueryTypes } from 'sequelize';
+import sequelize from '../../config/database';
 
 interface RoleQueryResult {
   id: number;
@@ -9,7 +9,7 @@ interface RoleQueryResult {
 
 export class RoleByIdSql {
   async roleByIdSql(id: number): Promise<RoleQueryResult[]> {
-    const query = `SELECT * FROM roles WHERE id = :id`;
+    const query = 'SELECT * FROM roles WHERE id = :id';
     try {
       const results: RoleQueryResult[] = await sequelize.query(query, {
         replacements: { id }, // Asegúrate de pasar el id como reemplazo

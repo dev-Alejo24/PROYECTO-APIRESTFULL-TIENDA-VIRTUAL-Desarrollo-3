@@ -1,9 +1,9 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
-import User from "./userModel";
-import Roles from "./rolesModel";
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
+import User from './userModel';
+import Roles from './rolesModel';
 
-class UserRoles extends Model{
+class UserRoles extends Model {
     public id!: number;
 
     public userId: number;
@@ -26,14 +26,14 @@ UserRoles.init(
             type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: User,
-                key: "id",
+                key: 'id',
             },
         },
         roleId: {
             type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: Roles,
-                key: "id",
+                key: 'id',
             },
         },
     },
@@ -41,7 +41,7 @@ UserRoles.init(
         tableName: 'userRoles',
         sequelize,
         timestamps: true,
-    }
+    },
 );
 
 export default UserRoles;

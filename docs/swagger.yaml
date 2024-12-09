@@ -20,9 +20,7 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                description:
+                type:
                   type: string
       responses:
         '201':
@@ -59,9 +57,7 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                description:
+                type:
                   type: string
       responses:
         '200':
@@ -103,18 +99,12 @@ paths:
               properties:
                 street:
                   type: string
-                number:
-                  type: string
                 city:
                   type: string
                 state:
                   type: string
-                country:
-                  type: string
                 zipCode:
                   type: string
-                userId:
-                  type: integer
       responses:
         '201':
           description: Dirección creada
@@ -152,18 +142,12 @@ paths:
               properties:
                 street:
                   type: string
-                number:
-                  type: string
                 city:
                   type: string
                 state:
                   type: string
-                country:
-                  type: string
                 zipCode:
                   type: string
-                userId:
-                  type: integer
       responses:
         '200':
           description: Dirección actualizada
@@ -185,14 +169,186 @@ paths:
         '404':
           description: Dirección no encontrada
 
-  /api/roles:
-    get:
-      summary: Obtener todos los roles
+  /api/users/register:
+    post:
+      summary: Registrar un nuevo usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                middleName:
+                  type: string
+                lastName:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                typeId:
+                  type: integer
+                identificationNumber:
+                  type: string
+                addressId:
+                  type: integer
+      responses:
+        '201':
+          description: Usuario registrado
+        '400':
+          description: Error en la solicitud
+
+  /api/users/login:
+    post:
+      summary: Iniciar sesión de un usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
       responses:
         '200':
-          description: Lista de roles
-        '500':
-          description: Error interno del servidor
+          description: Usuario autenticado
+        '400':
+          description: Error en la solicitud
+
+  /api/users/profile:
+    get:
+      summary: Obtener el perfil del usuario
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Perfil del usuario
+        '401':
+          description: No autorizado
+        '404':
+          description: Perfil no encontrado
+
+  /api/users/profile/{userId}:
+    put:
+      summary: Actualizar el perfil del usuario
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                middleName:
+                  type: string
+                lastName:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                typeId:
+                  type: integer
+                identificationNumber:
+                  type: string
+                addressId:
+                  type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Perfil actualizado
+        '400':
+          description: Error en la solicitud
+        '401':
+          description: No autorizado
+        '404':
+          description: Perfil no encontrado
+
+    delete:
+      summary: Eliminar el perfil del usuario
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Perfil eliminado
+        '401':
+          description: No autorizado
+        '404':
+          description: Perfil no encontrado
+
+  /api/users/profile/roles:
+    get:
+      summary: Obtener todos los roles
+      description: Devuelve una lista de todos los roles disponibles.
+      responses:
+        '200':
+          description: Lista de roles obtenida exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+      security:
+        - bearerAuth: []
+
+  /api/users/profile/roles/get/{roleId}:
+    get:
+      summary: Obtener un rol por ID
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          description: ID del rol a obtener.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rol obtenido exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+        '400':
+          description: Error en la validación del ID.
+      security:
+        - bearerAuth: []
+
+  /api/users/profile/roles/create:
     post:
       summary: Crear un nuevo rol
       requestBody:
@@ -204,34 +360,23 @@ paths:
               properties:
                 name:
                   type: string
-                description:
-                  type: string
+                  description: Nombre del rol.
       responses:
         '201':
-          description: Rol creado
+          description: Rol creado exitosamente.
         '400':
-          description: Error en la solicitud
+          description: Error en la validación del cuerpo.
+      security:
+        - bearerAuth: []
 
-  /api/roles/{id}:
-    get:
-      summary: Obtener un rol por ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Rol encontrado
-        '404':
-          description: Rol no encontrado
+  /api/users/profile/roles/update/{roleId}:
     put:
-      summary: Actualizar un rol
+      summary: Actualizar un rol por ID
       parameters:
-        - name: id
+        - name: roleId
           in: path
           required: true
+          description: ID del rol a actualizar.
           schema:
             type: integer
       requestBody:
@@ -243,39 +388,186 @@ paths:
               properties:
                 name:
                   type: string
-                description:
-                  type: string
+                  description: Nombre actualizado del rol.
       responses:
         '200':
-          description: Rol actualizado
+          description: Rol actualizado exitosamente.
         '400':
-          description: Error en la solicitud
-        '404':
-          description: Rol no encontrado
+          description: Error en la validación del cuerpo o del ID.
+      security:
+        - bearerAuth: []
+
+  /api/users/profile/roles/delete/{roleId}:
     delete:
-      summary: Eliminar un rol
+      summary: Eliminar un rol por ID
       parameters:
-        - name: id
+        - name: roleId
           in: path
           required: true
+          description: ID del rol a eliminar.
           schema:
             type: integer
       responses:
         '200':
-          description: Rol eliminado
-        '404':
-          description: Rol no encontrado
+          description: Rol eliminado exitosamente.
+        '400':
+          description: Error en la validación del ID.
+      security:
+        - bearerAuth: []
 
-  /api/user-roles:
+  /api/users/profile/roles/count:
     get:
-      summary: Obtener todos los roles de usuario
+      summary: Contar la cantidad total de roles
+      description: Devuelve el número total de roles registrados.
       responses:
         '200':
-          description: Lista de roles de usuario
-        '500':
-          description: Error interno del servidor
+          description: Cantidad de roles obtenida exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+      security:
+        - bearerAuth: []
+
+  /api/users/profile/roles/search/{name}:
+    get:
+      summary: Buscar un rol por nombre
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Nombre del rol a buscar.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rol encontrado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+        '404':
+          description: Rol no encontrado.
+      security:
+        - bearerAuth: []
+  /api/users/userRoles/{userId}:
+    get:
+      tags:
+        - UserRoles
+      summary: Obtener roles de un usuario específico
+      description: Obtiene la lista de roles asignados a un usuario.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del usuario.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de roles asignados al usuario.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+        '400':
+          description: Error en los parámetros enviados.
+        '401':
+          description: No autorizado.
+
+  /api/users/userRoles/lista/{userId}:
+    get:
+      tags:
+        - UserRoles
+      summary: Lista de roles de un usuario específico
+      description: Devuelve la lista detallada de roles asignados a un usuario.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del usuario.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista detallada de roles asignados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roles:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+        '400':
+          description: Error en los parámetros enviados.
+        '401':
+          description: No autorizado.
+
+  /api/users/userRoles/total/{userId}:
+    get:
+      tags:
+        - UserRoles
+      summary: Total de roles asignados a un usuario
+      description: Calcula el número total de roles asignados a un usuario específico.
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del usuario.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Número total de roles asignados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalRoles:
+                    type: integer
+        '400':
+          description: Error en los parámetros enviados.
+        '401':
+          description: No autorizado.
+
+  /api/users/profile/userRoles:
     post:
-      summary: Asignar un rol a un usuario
+      tags:
+        - UserRoles
+      summary: Asignar un nuevo rol a un usuario
+      description: Crea una nueva relación entre un usuario y un rol.
       requestBody:
         required: true
         content:
@@ -287,36 +579,76 @@ paths:
                   type: integer
                 roleId:
                   type: integer
+      security:
+        - bearerAuth: []
       responses:
         '201':
-          description: Rol asignado al usuario
+          description: Rol asignado exitosamente.
         '400':
-          description: Error en la solicitud
+          description: Error en los parámetros enviados.
+        '401':
+          description: No autorizado.
 
-  /api/user-roles/{id}:
-    get:
-      summary: Obtener un rol de usuario por ID
+  /api/users/profile/userRoles/{userId}:
+    put:
+      tags:
+        - UserRoles
+      summary: Actualizar roles de un usuario
+      description: Actualiza los roles asignados a un usuario específico.
       parameters:
-        - name: id
+        - name: userId
           in: path
           required: true
           schema:
             type: integer
+          description: ID del usuario.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roleIds:
+                  type: array
+                  items:
+                    type: integer
+      security:
+        - bearerAuth: []
       responses:
         '200':
-          description: Rol de usuario encontrado
-        '404':
-          description: Rol de usuario no encontrado
+          description: Roles actualizados exitosamente.
+        '400':
+          description: Error en los parámetros enviados.
+        '401':
+          description: No autorizado.
+
+  /api/users/profile/delete/userRoles/{userId}:
     delete:
-      summary: Eliminar un rol de usuario
+      tags:
+        - UserRoles
+      summary: Eliminar roles de un usuario
+      description: Elimina todos los roles asignados a un usuario específico.
       parameters:
-        - name: id
+        - name: userId
           in: path
           required: true
           schema:
             type: integer
+          description: ID del usuario.
+      security:
+        - bearerAuth: []
       responses:
         '200':
-          description: Rol de usuario eliminado
-        '404':
-          description: Rol de usuario no encontrado
+          description: Roles eliminados exitosamente.
+        '400':
+          description: Error en los parámetros enviados.
+        '401':
+          description: No autorizado.
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

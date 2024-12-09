@@ -17,7 +17,7 @@ class UpdateAddressService {
     }
     execute(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.updateAddressInfra.execute(id, data);
+            return this.updateAddressInfra.execute(id, data);
         });
     }
 }

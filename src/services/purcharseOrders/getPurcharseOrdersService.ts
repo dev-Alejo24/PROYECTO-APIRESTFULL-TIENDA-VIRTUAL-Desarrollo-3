@@ -4,11 +4,11 @@ export class GetPurchaseOrdersService {
   private purchaseOrdersSql = new GetPurchaseOrdersSql();
 
   async getAllPurchaseOrders() {
-    return await this.purchaseOrdersSql.fetchAllPurchaseOrders();
+    return this.purchaseOrdersSql.fetchAllPurchaseOrders();
   }
 
   async getPurchaseOrderById(id: number) {
     if (!id) throw new Error('El ID es requerido.');
-    return await this.purchaseOrdersSql.fetchPurchaseOrderById(id);
+    return this.purchaseOrdersSql.fetchPurchaseOrderById(id);
   }
 }

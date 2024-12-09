@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateRoleSql = void 0;
-const database_1 = __importDefault(require("../../config/database"));
 const sequelize_1 = require("sequelize");
+const database_1 = __importDefault(require("../../config/database"));
 class UpdateRoleSql {
     updateRoleSql(roleId, roleData) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "UPDATE roles SET name = :name WHERE id = :roleId";
+            const query = 'UPDATE roles SET name = :name WHERE id = :roleId';
             const [result] = yield database_1.default.query(query, {
                 replacements: Object.assign(Object.assign({}, roleData), { roleId }),
                 type: sequelize_1.QueryTypes.UPDATE,

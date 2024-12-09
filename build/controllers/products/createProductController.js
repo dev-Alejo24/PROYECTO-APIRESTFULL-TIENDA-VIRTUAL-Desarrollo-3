@@ -13,9 +13,11 @@ exports.createProduct = void 0;
 const createProductService_1 = require("../../services/products/createProductService");
 const createProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, description, price, idCategory } = req.body;
+        const { name, description, price, idCategory, } = req.body;
         const service = new createProductService_1.CreateProductService();
-        const newProduct = yield service.createProduct({ name, description, price, idCategory });
+        const newProduct = yield service.createProduct({
+            name, description, price, idCategory,
+        });
         res.status(201).json(newProduct);
     }
     catch (error) {

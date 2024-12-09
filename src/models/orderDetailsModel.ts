@@ -1,7 +1,7 @@
-import { Model, DataTypes } from "sequelize";
-import sequelize from "../config/database";
-import PurcharseOrders from "./purcharseOrdersModel"; // modelo
-import Products from "./productsModel"; // modelo
+import { Model, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
+import PurcharseOrders from './purcharseOrdersModel'; // modelo
+import Products from './productsModel'; // modelo
 
 class OrderDetails extends Model {
     public id!: number;
@@ -30,14 +30,14 @@ OrderDetails.init(
             type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: PurcharseOrders,
-                key: "id",
+                key: 'id',
             },
         },
         productId: {
             type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: Products,
-                key: "id",
+                key: 'id',
             },
         },
         quanty: {
@@ -50,10 +50,10 @@ OrderDetails.init(
         },
     },
     {
-        tableName: "orderDetails",
+        tableName: 'orderDetails',
         timestamps: true,
         sequelize,
-    }
+    },
 );
 
 export default OrderDetails;

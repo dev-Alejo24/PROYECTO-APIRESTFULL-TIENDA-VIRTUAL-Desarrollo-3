@@ -17,7 +17,7 @@ class DeleteAddressService {
     }
     execute(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.deleteAddressInfra.execute(id);
+            return this.deleteAddressInfra.execute(id);
         });
     }
 }

@@ -18,8 +18,8 @@ const database_1 = __importDefault(require("../../config/database"));
 class UpdateProductSql {
     updateProductSql(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "UPDATE products SET name = :name, description = :description, price = :price, idCategory = :idCategory, updatedAt = NOW() WHERE id = :id";
-            return yield database_1.default.query(query, {
+            const query = 'UPDATE products SET name = :name, description = :description, price = :price, idCategory = :idCategory, updatedAt = NOW() WHERE id = :id';
+            return database_1.default.query(query, {
                 replacements: Object.assign(Object.assign({}, data), { id }),
                 type: sequelize_1.QueryTypes.UPDATE,
             });

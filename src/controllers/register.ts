@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { validationResult } from "express-validator";
+import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 import { registerUser } from '../services/registerService';
 
 export const register = async (req: Request, res: Response): Promise<void> => {
@@ -9,11 +9,11 @@ export const register = async (req: Request, res: Response): Promise<void> => {
      return;
     }
 
-    try{
+    try {
         console.log(req.body, 'body');
         const user = await registerUser(req.body);
-        res.status(201).json({ message: 'Usuario registrado exitosamente', user});
-    }catch (error: any) {
+        res.status(201).json({ message: 'Usuario registrado exitosamente', user });
+    } catch (error: any) {
         res.status(400).json({ message: error.message });
     }
-}
+};

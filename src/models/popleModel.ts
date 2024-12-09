@@ -15,7 +15,7 @@ class People extends Model {
  public identificationNumber!: string;
 
   public firstName!: string;
-  
+
   public middleName!: string;
 
   public lastNames!: string;
@@ -88,6 +88,5 @@ People.init(
     timestamps: true, // Habilitar timestamps automáticos
   },
 );
-
 
 export default People;

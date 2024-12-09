@@ -18,7 +18,7 @@ const database_1 = __importDefault(require("../../config/database"));
 class RoleByIdSql {
     roleByIdSql(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = `SELECT * FROM roles WHERE id = :id`;
+            const query = 'SELECT * FROM roles WHERE id = :id';
             try {
                 const results = yield database_1.default.query(query, {
                     replacements: { id },
