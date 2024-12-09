@@ -1,4 +1,3 @@
-// services/createRoleService.ts
 import { CreateRoleSql } from '../../infra/roles/createRoles';
 
 export class CreateRoleService {

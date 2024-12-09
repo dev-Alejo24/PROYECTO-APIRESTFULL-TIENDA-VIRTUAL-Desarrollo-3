@@ -19,7 +19,7 @@ class UpdateUserRolesService {
             const getUserRoles = new getUserRole_1.GetUserRolesSql();
             const existingRoles = yield getUserRoles.getUserRolesSql(userId);
             if (!existingRoles.length) {
-                throw new Error('El usuario no tiene roles existentes.');
+                throw new Error('El usuario no tiene roles existentes. No se puede realizar la actualización.');
             }
             const updateRoles = new updateUserRoles_1.UpdateUserRolesSql();
             const updatedCount = yield updateRoles.updateUserRolesSql(userId, roleIds);

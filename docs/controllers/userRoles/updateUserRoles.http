@@ -1,0 +1,8 @@
+###
+PUT http://localhost:3001/api/users/profile/userRoles/{userId}
+Content-Type: application/json
+Authorization: Bearer {eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMzNzcwNDU5LCJleHAiOjE3MzM3NzQwNTl9.7L9aT7u25fgK7bhBz4r1ef1FKANrWgwm-07ctdzk9M8}
+
+{
+  "roleIds": [2,3]
+}

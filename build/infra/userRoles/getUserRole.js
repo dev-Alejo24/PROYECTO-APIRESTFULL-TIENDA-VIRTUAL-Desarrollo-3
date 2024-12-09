@@ -18,16 +18,16 @@ const database_1 = __importDefault(require("../../config/database"));
 class GetUserRolesSql {
     getUserRolesSql(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = userId
-                ? `SELECT roles.* 
-         FROM roles 
-         INNER JOIN userRoles 
-         ON roles.id = userRoles.roleId 
-         WHERE userRoles.userId = :userId`
-                : `SELECT * FROM userRoles`;
+            const query = `
+      SELECT roles.id, roles.name 
+      FROM roles 
+      INNER JOIN userRoles 
+      ON roles.id = userRoles.roleId 
+      WHERE userRoles.userId = :userId
+    `;
             try {
                 const results = yield database_1.default.query(query, {
-                    replacements: userId ? { userId } : undefined,
+                    replacements: { userId },
                     type: sequelize_1.QueryTypes.SELECT,
                 });
                 return results;
@@ -35,25 +35,6 @@ class GetUserRolesSql {
             catch (error) {
                 console.error('Error ejecutando la consulta:', error);
                 throw new Error('No se pudo obtener los roles de usuario.');
-            }
-        });
-    }
-    getTotalUserRoles(userId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const query = `SELECT COUNT(*) AS total 
-                   FROM userRoles 
-                   WHERE userId = :userId`;
-            try {
-                const results = yield database_1.default.query(query, {
-                    replacements: { userId },
-                    type: sequelize_1.QueryTypes.SELECT,
-                });
-                const total = results[0].total;
-                return total;
-            }
-            catch (error) {
-                console.error('Error ejecutando la consulta:', error);
-                throw new Error('No se pudo obtener el total de roles de usuario.');
             }
         });
     }

@@ -1,0 +1,4 @@
+###
+PUT http://localhost:3001/api/users/profile/roles/update/1
+Content-Type: application/json
+Authorization: Bearer {eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMzNzYwMTg0LCJleHAiOjE3MzM3NjM3ODR9.tgxDic3dphFwS77Qk1wC7rlZg9MY3JxxXc_ohkTxxpE}

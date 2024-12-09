@@ -14,12 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateUserRolesSql = void 0;
 const userRolesModel_1 = __importDefault(require("../../models/userRolesModel"));
+const rolesModel_1 = __importDefault(require("../../models/rolesModel"));
 const database_1 = __importDefault(require("../../config/database"));
 class UpdateUserRolesSql {
     updateUserRolesSql(userId, roleIds) {
         return __awaiter(this, void 0, void 0, function* () {
             const transaction = yield database_1.default.transaction();
             try {
+                const validRoles = yield rolesModel_1.default.findAll({
+                    where: { id: roleIds },
+                    attributes: ['id'],
+                });
+                if (validRoles.length !== roleIds.length) {
+                    throw new Error('Uno o más IDs de roles no son válidos.');
+                }
                 yield userRolesModel_1.default.destroy({
                     where: { userId },
                     transaction,

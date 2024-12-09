@@ -14,8 +14,8 @@ const deleteRole_1 = require("../../infra/roles/deleteRole");
 class DeleteRoleService {
     deleteRole(roleId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const deleteRoleSql = new deleteRole_1.DeleteRoleSql();
-            const deletedCount = yield deleteRoleSql.deleteRoleSql(roleId);
+            const roleSql = new deleteRole_1.DeleteRoleSql();
+            const deletedCount = yield roleSql.deleteRoleSql(roleId);
             return deletedCount;
         });
     }

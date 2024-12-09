@@ -5,12 +5,16 @@ import { searchRoleByName } from '../controllers/roles/searchRoleController'; //
 import { getRoles } from '../controllers/roles/getRole';
 import { updateRole } from '../controllers/roles/updateRoleController';
 import { deleteRole } from '../controllers/roles/deleteRoleController';
+import { countRoles } from '../controllers/roles/countRolesController'; // Importar el controlador para contar roles
 import authMiddleware from '../middlewares/authMiddleware';
 
 const router: Router = Router();
 
 
 // Rutas privadas
+
+// Ruta para obtener todos los roles
+router.get('/api/users/profile/roles', getRoles);
 
 // Obtener un rol por ID
 router.get('/api/users/profile/roles/get:roleId', [
@@ -24,7 +28,7 @@ router.post('/api/users/profile/roles/create', [
 ], authMiddleware, createRole);
 
 // Actualizar un rol por ID
-router.put('/api/users/profile/roles/update:roleId', [
+router.put('/api/users/profile/roles/update/:roleId', [
     param('roleId').isNumeric().withMessage('El ID del rol debe ser un número'),
     body('name').optional().notEmpty().withMessage('El nombre del rol es requerido'),
     // body('description').optional().isString().withMessage('La descripción debe ser una cadena'),
@@ -35,8 +39,6 @@ router.delete('/api/users/profile/roles/delete/:roleId', [
     param('roleId').isNumeric().withMessage('El ID del rol debe ser un número'),
 ], authMiddleware, deleteRole);
 
-
-import { countRoles } from '../controllers/roles/countRolesController'; // Importar el controlador para contar roles
 
 // Contar la cantidad total de roles
 router.get('/api/users/profile/roles/count', authMiddleware, countRoles);

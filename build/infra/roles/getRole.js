@@ -42,7 +42,7 @@ class GetRoleSql {
     }
     getRolesByName(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = "SELECT * FROM roles WHERE name LIKE :name";
+            const query = "SELECT * FROM roles WHERE LOWER(name) LIKE LOWER(:name)";
             const roles = yield database_1.default.query(query, {
                 replacements: { name: `%${name}%` },
                 type: sequelize_1.QueryTypes.SELECT,

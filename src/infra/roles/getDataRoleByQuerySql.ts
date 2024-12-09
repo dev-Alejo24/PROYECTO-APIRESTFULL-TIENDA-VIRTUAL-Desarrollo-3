@@ -1,3 +1,4 @@
+// infra/roles/getDataRoleByQuerySql
 import { QueryTypes } from "sequelize";
 import sequelize from "../../config/database";
 

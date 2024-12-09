@@ -25,7 +25,7 @@ export class GetRoleSql {
   }
 
   async getRolesByName(name: string): Promise<any[]> {
-    const query = "SELECT * FROM roles WHERE name LIKE :name";
+    const query = "SELECT * FROM roles WHERE LOWER(name) LIKE LOWER(:name)";
     const roles = await sequelize.query(query, {
       replacements: { name: `%${name}%` },
       type: QueryTypes.SELECT,

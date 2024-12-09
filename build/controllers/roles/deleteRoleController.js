@@ -14,9 +14,18 @@ const deleteRoleService_1 = require("../../services/roles/deleteRoleService");
 const deleteRole = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const roleId = req.params ? Number(req.params.roleId) : null;
+        if (roleId === null) {
+            res.status(400).json({ error: 'ID del rol no proporcionado' });
+            return;
+        }
         const roleService = new deleteRoleService_1.DeleteRoleService();
         const deletedCount = yield roleService.deleteRole(roleId);
-        res.status(200).json({ message: 'Rol eliminado', deletedCount });
+        if (deletedCount > 0) {
+            res.status(200).json({ message: 'Rol eliminado', deletedCount });
+        }
+        else {
+            res.status(404).json({ error: 'Rol no encontrado' });
+        }
     }
     catch (error) {
         res.status(400).json({ error: error.message });

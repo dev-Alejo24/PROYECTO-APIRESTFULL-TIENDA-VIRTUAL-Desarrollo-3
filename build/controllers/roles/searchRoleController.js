@@ -14,8 +14,8 @@ const getRole_1 = require("../../infra/roles/getRole");
 const searchRoleByName = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const name = req.query.name;
-        const roleService = new getRole_1.GetRoleSql();
-        const roles = yield roleService.getRolesByName(name);
+        const getRoleSql = new getRole_1.GetRoleSql();
+        const roles = yield getRoleSql.getRolesByName(name);
         res.status(200).json({ roles });
     }
     catch (error) {

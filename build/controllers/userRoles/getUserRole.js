@@ -15,12 +15,19 @@ const getUserRoles = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     var _a;
     try {
         const userId = ((_a = req.params) === null || _a === void 0 ? void 0 : _a.userId) ? Number(req.params.userId) : undefined;
+        if (!userId) {
+            return res.status(400).json({ error: 'El ID del usuario es requerido.' });
+        }
         const userRoleService = new getUserRoleService_1.GetUserRolesService();
         const roles = yield userRoleService.getUserRoles(userId);
+        if (!roles.length) {
+            return res.status(404).json({ message: 'No se encontraron roles para el usuario.' });
+        }
         res.status(200).json({ roles });
     }
     catch (error) {
-        res.status(400).json({ error: error.message });
+        console.error(error);
+        res.status(500).json({ error: error.message });
     }
 });
 exports.getUserRoles = getUserRoles;

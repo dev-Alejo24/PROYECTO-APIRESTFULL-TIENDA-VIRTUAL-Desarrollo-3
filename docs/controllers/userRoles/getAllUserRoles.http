@@ -1,0 +1,3 @@
+###
+GET http://localhost:3001/api/users/userRoles
+Authorization: Bearer {eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMzNzY0MTA2LCJleHAiOjE3MzM3Njc3MDZ9.mnXAHttAZjOPfkJxpbQQu3Z7Q_ALT3P-PbAKcWfWaaU}

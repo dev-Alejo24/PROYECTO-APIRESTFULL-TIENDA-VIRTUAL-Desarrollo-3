@@ -1,4 +1,4 @@
-// infra/deleteRoleSql.ts
+// infra/deleteRole.ts
 import sequelize from '../../config/database';
 import { QueryTypes } from 'sequelize';
 

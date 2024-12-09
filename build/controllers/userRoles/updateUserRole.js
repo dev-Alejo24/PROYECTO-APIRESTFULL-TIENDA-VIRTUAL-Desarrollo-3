@@ -15,12 +15,19 @@ const updateUserRoles = (req, res) => __awaiter(void 0, void 0, void 0, function
     try {
         const userId = req.params ? Number(req.params.userId) : null;
         const { roleIds } = req.body;
+        if (isNaN(userId)) {
+            return res.status(400).json({ error: 'El ID del usuario no es válido.' });
+        }
+        if (!Array.isArray(roleIds) || !roleIds.every(Number.isInteger)) {
+            return res.status(400).json({ error: 'roleIds debe ser un array de números válidos.' });
+        }
         const userRoleService = new updateUserRoleService_1.UpdateUserRolesService();
         const updatedCount = yield userRoleService.updateUserRoles(userId, roleIds);
-        res.status(200).json({ message: 'Roles actualizados', updatedCount });
+        res.status(200).json({ message: 'Roles actualizados correctamente.', updatedCount });
     }
     catch (error) {
-        res.status(400).json({ error: error.message });
+        console.error('Error en updateUserRoles:', error);
+        res.status(500).json({ error: error.message || 'Error interno del servidor.' });
     }
 });
 exports.updateUserRoles = updateUserRoles;
